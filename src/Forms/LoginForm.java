@@ -5,6 +5,14 @@
  */
 package Forms;
 
+import DAO.UsuarioDAO;
+import Entity.Users;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Igor
@@ -63,6 +71,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         jb_entrar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jb_entrar.setText("Entrar");
+        jb_entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_entrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jb_entrar);
         jb_entrar.setBounds(300, 310, 90, 29);
 
@@ -107,6 +120,24 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         new SetupParForm().show();
     }//GEN-LAST:event_mi_configConexaoActionPerformed
+
+    private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
+        // TODO add your handling code here:
+        Users user = new Users();
+        user.setLogin(tf_user.getText());
+        user.setPassword(pf_pass.getText());
+        try {
+            if(new UsuarioDAO().logar(user)){
+                JOptionPane.showMessageDialog(null, "Entrou!!");
+            }else{
+                JOptionPane.showMessageDialog(null,null, "Usuário ou senha incorreto!!", ERROR);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jb_entrarActionPerformed
 
     /**
      * @param args the command line arguments
