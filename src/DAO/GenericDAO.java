@@ -17,7 +17,7 @@ public abstract class GenericDAO {
     // método para obter a conexão com o banco de dados
     public Connection getConnection() {
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://23.88.254.249/DiaryControl", "root", "cls112233");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://23.88.254.249/DiaryControl", "root", "password");
             return cn;
         } catch (SQLException ex) {
             Logger.getLogger(GenericDAO.class.getName()).log(Level.SEVERE, null, ex);
