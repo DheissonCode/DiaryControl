@@ -7,6 +7,7 @@ package Forms;
 
 import DAO.UsuarioDAO;
 import Entity.Users;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -49,6 +50,11 @@ public class LoginForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(566, 371));
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         la_usuario.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -64,8 +70,19 @@ public class LoginForm extends javax.swing.JFrame {
         la_senha.setBounds(300, 230, 100, 30);
 
         tf_user.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tf_user.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_userKeyPressed(evt);
+            }
+        });
         getContentPane().add(tf_user);
         tf_user.setBounds(400, 160, 170, 30);
+
+        pf_pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pf_passKeyPressed(evt);
+            }
+        });
         getContentPane().add(pf_pass);
         pf_pass.setBounds(400, 230, 170, 30);
 
@@ -74,6 +91,11 @@ public class LoginForm extends javax.swing.JFrame {
         jb_entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_entrarActionPerformed(evt);
+            }
+        });
+        jb_entrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jb_entrarKeyPressed(evt);
             }
         });
         getContentPane().add(jb_entrar);
@@ -95,6 +117,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jm_conexao.setText("Conexão");
 
+        mi_configConexao.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         mi_configConexao.setText("Configurar conexão...");
         mi_configConexao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,8 +130,8 @@ public class LoginForm extends javax.swing.JFrame {
 
         setJMenuBar(mb_barrademenu);
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-613)/2, (screenSize.height-421)/2, 613, 421);
+        setSize(new java.awt.Dimension(613, 421));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_sairActionPerformed
@@ -128,9 +151,11 @@ public class LoginForm extends javax.swing.JFrame {
         user.setPassword(pf_pass.getText());
         try {
             if(new UsuarioDAO().logar(user)){
-                JOptionPane.showMessageDialog(null, "Entrou!!");
+                new MainForm().show();
+                dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Usuário ou senha incorreto!!", null , JOptionPane.ERROR_MESSAGE);
+                tf_user.grabFocus();
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,6 +163,34 @@ public class LoginForm extends javax.swing.JFrame {
             Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jb_entrarActionPerformed
+
+    private void jb_entrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jb_entrarKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jb_entrarKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_formKeyPressed
+
+    private void tf_userKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_userKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_entrarActionPerformed(null);
+        }else if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
+            jb_sairActionPerformed(null);
+        }
+    }//GEN-LAST:event_tf_userKeyPressed
+
+    private void pf_passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pf_passKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_entrarActionPerformed(null);
+        }else if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
+            jb_sairActionPerformed(null);
+        }
+    }//GEN-LAST:event_pf_passKeyPressed
 
     /**
      * @param args the command line arguments
