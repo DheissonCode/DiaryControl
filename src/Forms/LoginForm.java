@@ -130,7 +130,7 @@ public class LoginForm extends javax.swing.JFrame {
             if(new UsuarioDAO().logar(user)){
                 JOptionPane.showMessageDialog(null, "Entrou!!");
             }else{
-                JOptionPane.showMessageDialog(null,null, "Usuário ou senha incorreto!!", ERROR);
+                JOptionPane.showMessageDialog(null,"Usuário ou senha incorreto!!", null , JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
