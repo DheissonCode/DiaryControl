@@ -130,8 +130,8 @@ public class LoginForm extends javax.swing.JFrame {
 
         setJMenuBar(mb_barrademenu);
 
-        setSize(new java.awt.Dimension(613, 421));
-        setLocationRelativeTo(null);
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-613)/2, (screenSize.height-421)/2, 613, 421);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_sairActionPerformed
