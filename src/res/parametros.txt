@@ -1,4 +1,4 @@
-localhost
+23.88.254.249
 root
-
-sysfood
+cls112233
+DiaryControl
