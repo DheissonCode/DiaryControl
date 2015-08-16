@@ -5,6 +5,13 @@
  */
 package Forms;
 
+import DAO.ConfiguracaoDAO;
+import Entity.ParametrosDb;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Igor
@@ -14,8 +21,14 @@ public class SetupParForm extends javax.swing.JFrame {
     /**
      * Creates new form SetupParForm
      */
+    static ParametrosDb par = new ParametrosDb();
     public SetupParForm() {
         initComponents();
+        try {
+            carregarCampos();
+        } catch (IOException ex) {
+            Logger.getLogger(SetupParForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -31,15 +44,16 @@ public class SetupParForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tf_url = new javax.swing.JTextField();
+        tf_user = new javax.swing.JTextField();
+        tf_senha = new javax.swing.JTextField();
+        tf_bd = new javax.swing.JTextField();
+        jb_salvar = new javax.swing.JButton();
+        jb_voltar = new javax.swing.JButton();
         bg_padraoPequeno = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -66,38 +80,69 @@ public class SetupParForm extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(100, 210, 34, 26);
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(160, 90, 200, 30);
+        tf_url.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        getContentPane().add(tf_url);
+        tf_url.setBounds(160, 90, 200, 30);
 
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(190, 130, 170, 30);
+        tf_user.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        getContentPane().add(tf_user);
+        tf_user.setBounds(190, 130, 170, 30);
 
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(180, 170, 180, 30);
+        tf_senha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        getContentPane().add(tf_senha);
+        tf_senha.setBounds(180, 170, 180, 30);
 
-        jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(140, 210, 220, 30);
+        tf_bd.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        getContentPane().add(tf_bd);
+        tf_bd.setBounds(140, 210, 220, 30);
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jButton1.setText("Salvar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(210, 330, 81, 29);
+        jb_salvar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jb_salvar.setText("Salvar");
+        jb_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jb_salvar);
+        jb_salvar.setBounds(210, 330, 81, 29);
 
-        jButton2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jButton2.setText("Voltar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(330, 330, 79, 29);
+        jb_voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jb_voltar.setText("Voltar");
+        jb_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jb_voltar);
+        jb_voltar.setBounds(330, 330, 79, 29);
 
         bg_padraoPequeno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/padraoPequena.png"))); // NOI18N
         getContentPane().add(bg_padraoPequeno);
-        bg_padraoPequeno.setBounds(0, 0, 436, 433);
+        bg_padraoPequeno.setBounds(0, -60, 500, 540);
 
-        pack();
+        setSize(new java.awt.Dimension(439, 449));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_voltarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jb_voltarActionPerformed
+
+    private void jb_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_salvarActionPerformed
+        // TODO add your handling code here:
+        par.setUrl(tf_url.getText());
+        par.setUser(tf_user.getText());
+        par.setPass(tf_senha.getText());
+        par.setDb(tf_bd.getText());
+        ConfiguracaoDAO dao = new ConfiguracaoDAO();
+        try {
+            dao.writeConf(par);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SetupParForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dispose();
+    }//GEN-LAST:event_jb_salvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,18 +178,29 @@ public class SetupParForm extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void carregarCampos() throws IOException{
+        
+        ConfiguracaoDAO daop = new ConfiguracaoDAO();
+        par = daop.loadConf();
+        tf_user.setText(par.getUser());
+        tf_senha.setText(par.getPass());
+        tf_url.setText(par.getUrl());
+        tf_bd.setText(par.getDb());
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_padraoPequeno;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton jb_salvar;
+    private javax.swing.JButton jb_voltar;
+    private javax.swing.JTextField tf_bd;
+    private javax.swing.JTextField tf_senha;
+    private javax.swing.JTextField tf_url;
+    private javax.swing.JTextField tf_user;
     // End of variables declaration//GEN-END:variables
 }

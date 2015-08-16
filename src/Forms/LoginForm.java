@@ -68,6 +68,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         jb_sair.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jb_sair.setText("Sair");
+        jb_sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_sairActionPerformed(evt);
+            }
+        });
         getContentPane().add(jb_sair);
         jb_sair.setBounds(480, 310, 80, 29);
 
@@ -78,6 +83,11 @@ public class LoginForm extends javax.swing.JFrame {
         jm_conexao.setText("Conexão");
 
         mi_configConexao.setText("Configurar conexão...");
+        mi_configConexao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_configConexaoActionPerformed(evt);
+            }
+        });
         jm_conexao.add(mi_configConexao);
 
         mb_barrademenu.add(jm_conexao);
@@ -87,6 +97,16 @@ public class LoginForm extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(613, 421));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_sairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jb_sairActionPerformed
+
+    private void mi_configConexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_configConexaoActionPerformed
+        // TODO add your handling code here:
+        new SetupParForm().show();
+    }//GEN-LAST:event_mi_configConexaoActionPerformed
 
     /**
      * @param args the command line arguments
