@@ -7,10 +7,12 @@ package Forms;
 
 import DAO.ConfiguracaoDAO;
 import Entity.ParametrosDb;
+import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -81,18 +83,38 @@ public class SetupParForm extends javax.swing.JFrame {
         jLabel4.setBounds(100, 210, 34, 26);
 
         tf_url.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tf_url.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_urlKeyPressed(evt);
+            }
+        });
         getContentPane().add(tf_url);
         tf_url.setBounds(160, 90, 200, 30);
 
         tf_user.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tf_user.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_userKeyPressed(evt);
+            }
+        });
         getContentPane().add(tf_user);
         tf_user.setBounds(190, 130, 170, 30);
 
         tf_senha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tf_senha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_senhaKeyPressed(evt);
+            }
+        });
         getContentPane().add(tf_senha);
         tf_senha.setBounds(180, 170, 180, 30);
 
         tf_bd.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tf_bd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_bdKeyPressed(evt);
+            }
+        });
         getContentPane().add(tf_bd);
         tf_bd.setBounds(140, 210, 220, 30);
 
@@ -138,11 +160,51 @@ public class SetupParForm extends javax.swing.JFrame {
         ConfiguracaoDAO dao = new ConfiguracaoDAO();
         try {
             dao.writeConf(par);
+            JOptionPane.showMessageDialog(null, "Parâmetros alterados com sucesso!!");
+            dispose();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(SetupParForm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Parâmetros alterados com sucesso!!", null, JOptionPane.ERROR_MESSAGE);
+            tf_url.grabFocus();
         }
-        dispose();
+        
     }//GEN-LAST:event_jb_salvarActionPerformed
+
+    private void tf_urlKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_urlKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_salvarActionPerformed(null);
+        }else if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
+            jb_voltarActionPerformed(null);
+        }
+    }//GEN-LAST:event_tf_urlKeyPressed
+
+    private void tf_userKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_userKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_salvarActionPerformed(null);
+        }else if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
+            jb_voltarActionPerformed(null);
+        }
+    }//GEN-LAST:event_tf_userKeyPressed
+
+    private void tf_senhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_senhaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_salvarActionPerformed(null);
+        }else if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
+            jb_voltarActionPerformed(null);
+        }
+    }//GEN-LAST:event_tf_senhaKeyPressed
+
+    private void tf_bdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_bdKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_salvarActionPerformed(null);
+        }else if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
+            jb_voltarActionPerformed(null);
+        }
+    }//GEN-LAST:event_tf_bdKeyPressed
 
     /**
      * @param args the command line arguments
