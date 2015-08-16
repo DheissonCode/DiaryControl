@@ -27,6 +27,7 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
+        preencher_jtable();
     }
 
     /**
