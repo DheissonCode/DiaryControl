@@ -40,50 +40,61 @@ public class SetupParForm extends javax.swing.JFrame {
         bg_padraoPequeno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("URL:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(100, 90, 47, 26);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuário:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(100, 130, 82, 26);
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Senha:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(100, 170, 67, 26);
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("BD:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(100, 210, 34, 26);
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 200, 30));
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(160, 90, 200, 30);
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, 30));
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(190, 130, 170, 30);
 
         jTextField3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 180, 30));
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(180, 170, 180, 30);
 
         jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 220, 30));
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(140, 210, 220, 30);
 
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jButton1.setText("Salvar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, -1));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(210, 330, 81, 29);
 
         jButton2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jButton2.setText("Voltar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
+        getContentPane().add(jButton2);
+        jButton2.setBounds(330, 330, 79, 29);
 
         bg_padraoPequeno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/padraoPequena.png"))); // NOI18N
-        getContentPane().add(bg_padraoPequeno, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(bg_padraoPequeno);
+        bg_padraoPequeno.setBounds(0, 0, 436, 433);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

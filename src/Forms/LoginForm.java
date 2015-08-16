@@ -41,32 +41,39 @@ public class LoginForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(566, 371));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         la_usuario.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         la_usuario.setForeground(new java.awt.Color(255, 255, 255));
         la_usuario.setText("Usuário:");
-        getContentPane().add(la_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 100, 30));
+        getContentPane().add(la_usuario);
+        la_usuario.setBounds(300, 160, 100, 30);
 
         la_senha.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         la_senha.setForeground(new java.awt.Color(255, 255, 255));
         la_senha.setText("Senha:");
-        getContentPane().add(la_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 100, 30));
+        getContentPane().add(la_senha);
+        la_senha.setBounds(300, 230, 100, 30);
 
         tf_user.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(tf_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 170, 30));
-        getContentPane().add(pf_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 170, 30));
+        getContentPane().add(tf_user);
+        tf_user.setBounds(400, 160, 170, 30);
+        getContentPane().add(pf_pass);
+        pf_pass.setBounds(400, 230, 170, 30);
 
         jb_entrar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jb_entrar.setText("Entrar");
-        getContentPane().add(jb_entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 90, -1));
+        getContentPane().add(jb_entrar);
+        jb_entrar.setBounds(300, 310, 90, 29);
 
         jb_sair.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jb_sair.setText("Sair");
-        getContentPane().add(jb_sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 80, -1));
+        getContentPane().add(jb_sair);
+        jb_sair.setBounds(480, 310, 80, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/BGLogin.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 660, 410));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -10, 660, 410);
 
         jm_conexao.setText("Conexão");
 
@@ -77,8 +84,8 @@ public class LoginForm extends javax.swing.JFrame {
 
         setJMenuBar(mb_barrademenu);
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-613)/2, (screenSize.height-421)/2, 613, 421);
+        setSize(new java.awt.Dimension(613, 421));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
