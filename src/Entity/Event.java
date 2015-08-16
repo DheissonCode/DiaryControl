@@ -5,6 +5,7 @@
  */
 package Entity;
 
+import Forms.SwingColumn;
 import java.sql.Date;
 
 /**
@@ -13,9 +14,12 @@ import java.sql.Date;
  */
 public class Event {
     
+    @SwingColumn (description="Identificador")
     private Integer id;
-    private Date date;
-    private Contacts fk_contact;
+    private Integer day;
+    private Integer month;
+    private Integer year;
+    @SwingColumn (description="Nota")
     private String notes;
 
     public Integer getId() {
@@ -26,28 +30,36 @@ public class Event {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Contacts getFk_contact() {
-        return fk_contact;
-    }
-
-    public void setFk_contact(Contacts fk_contact) {
-        this.fk_contact = fk_contact;
-    }
-
     public String getNotes() {
         return notes;
     }
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Integer getDay() {
+        return day;
+    }
+
+    public void setDay(Integer day) {
+        this.day = day;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
     
     
