@@ -245,7 +245,7 @@ public final class MainForm extends javax.swing.JFrame {
     public void preencher_jtable(Integer day, Integer month, Integer year) 
     {
         try {
-            evento = eventDAO.getAllEventsPerDate(day, month, year);
+            evento = eventDAO.getEventList(day, month, year);
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }

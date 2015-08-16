@@ -27,9 +27,24 @@ public class EventDAO extends GenericDAO
         executeQuery(query, day, month, year);
         //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
         
-        
     }
     
+     public List<Event> getEventList (Integer day, Integer month, Integer year) throws SQLException
+    {
+        List<Event> events = new LinkedList<Event>();
+        
+        String query = "SELECT * FROM event WHERE day = ? AND month = ? AND year = ?";
+        ResultSet rs = executeQuery(query, day, month, year);
+        //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
+                
+                while(rs.next())
+                {
+                events.add(populateEvent(rs));
+                }
+                rs.close();
+        return events;
+    }
+        
     public List<Event> getAllEventDay() throws SQLException 
     {
         List<Event> events = new LinkedList<Event>();
