@@ -131,6 +131,7 @@ public final class MainForm extends javax.swing.JFrame {
         jc_year.setDayChooser(jc_day);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/master
         jc_year.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -140,6 +141,8 @@ public final class MainForm extends javax.swing.JFrame {
         });
 =======
 >>>>>>> #12.11
+=======
+>>>>>>> parent of d882d47... #12.11
 
         jb_consul.setText("Realizar Consulta !");
 
@@ -211,11 +214,6 @@ public final class MainForm extends javax.swing.JFrame {
         jMenu1.setText("Clientes");
 
         jMenuItem2.setText("Cadastrar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Atualizar");
@@ -265,6 +263,7 @@ public final class MainForm extends javax.swing.JFrame {
         search_jtable2(Integer.parseInt(jtf_search.getText()));
     }//GEN-LAST:event_jb_okActionPerformed
 
+<<<<<<< HEAD
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         new NewContactForm().show();
@@ -275,6 +274,8 @@ public final class MainForm extends javax.swing.JFrame {
         new NewContactForm().show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+=======
+>>>>>>> parent of d882d47... #12.11
     /**
      * @param args the command line arguments
      */
