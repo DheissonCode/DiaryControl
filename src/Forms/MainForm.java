@@ -6,6 +6,8 @@ package Forms;
 
 import DAO.EventDAO;
 import Entity.Event;
+import DAO.ContactsDAO;
+import Entity.Contacts;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +34,10 @@ public final class MainForm extends javax.swing.JFrame {
     EventDAO eventDAO = new EventDAO();
     Event event = new Event();
     List<Event> evento;
+    ContactsDAO contactDAO = new ContactsDAO();
+    Contacts contacts = new Contacts();
+    List<Contacts> contactses;
+    
     Data datm = new Data();
 
 
@@ -45,6 +51,7 @@ public final class MainForm extends javax.swing.JFrame {
         Integer month = datm.getMonth();
         Integer year = datm.getYear();
         preencher_jtable(day, month, year);
+        preencher_jtableTudo();
         
 
     }
@@ -59,6 +66,7 @@ public final class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bg_search = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -71,6 +79,8 @@ public final class MainForm extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jtf_search = new javax.swing.JTextField();
         jb_ok = new javax.swing.JButton();
+        jrb_name = new javax.swing.JRadioButton();
+        jrb_cpf = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -132,6 +142,11 @@ public final class MainForm extends javax.swing.JFrame {
         jc_year.setDayChooser(jc_day);
 
         jb_consul.setText("Realizar Consulta !");
+        jb_consul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_consulActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -166,17 +181,17 @@ public final class MainForm extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Identificador", "Nota"
+                "Cliente", "Telefone 1", "Celular 1", "e-Mail", "CPF/CNPJ", "Anotações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -195,6 +210,20 @@ public final class MainForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 60, 30));
+
+        jrb_name.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_name);
+        jrb_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_name.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_name.setText("Nome Cliente");
+        jPanel1.add(jrb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 130, -1));
+
+        jrb_cpf.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_cpf);
+        jrb_cpf.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_cpf.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_cpf.setText("CPF/CNPJ");
+        jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 120, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
@@ -284,8 +313,24 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
         // TODO add your handling code here:
-        search_jtable2(Integer.parseInt(jtf_search.getText()));
+        if(jrb_name.isEnabled())
+        {
+            System.out.println("NAME");
+        search_jtable2Name(jtf_search.getText());
+        } 
+        
+            if(jrb_cpf.isEnabled())
+            {
+                System.out.println("CPF");
+                search_jtable2Cpf(jtf_search.getText());
+            }
+        
     }//GEN-LAST:event_jb_okActionPerformed
+
+    private void jb_consulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_consulActionPerformed
+        // TODO add your handling code here:
+        preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
+    }//GEN-LAST:event_jb_consulActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,6 +367,7 @@ public final class MainForm extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bg_search;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -344,6 +390,8 @@ public final class MainForm extends javax.swing.JFrame {
     private com.toedter.calendar.JDayChooser jc_day;
     private com.toedter.calendar.JMonthChooser jc_month;
     private com.toedter.calendar.JYearChooser jc_year;
+    private javax.swing.JRadioButton jrb_cpf;
+    private javax.swing.JRadioButton jrb_name;
     private javax.swing.JTextField jtf_search;
     // End of variables declaration//GEN-END:variables
 
@@ -358,13 +406,35 @@ public final class MainForm extends javax.swing.JFrame {
         jTable1.setModel(m);
     }
 
-    private void search_jtable2(Integer day) {
+    private void search_jtable2Name(String name) {
                 try {
-            evento = eventDAO.getAllEventsPerDate(day);
+            contactses = contactDAO.getAllContactsPerName(name);
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        MyTableModel m = new MyTableModel(Event.class, evento, jTable2);
+        MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
+        jTable2.setModel(m);
+    }
+    
+        private void search_jtable2Cpf(String cpf) {
+                try {
+            contactses = contactDAO.getAllContactsPerCpf(cpf);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
+        jTable2.setModel(m);
+    }
+
+    private void preencher_jtableTudo() {
+         try {
+            contactses = contactDAO.getAllContacts();
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
         jTable2.setModel(m);
     }
 

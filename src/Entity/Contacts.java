@@ -4,6 +4,8 @@
  */
 package Entity;
 
+import Forms.SwingColumn;
+
 /**
  *
  * @author zEveerY
@@ -11,17 +13,25 @@ package Entity;
 public class Contacts {
     
     private Integer id;
+    @SwingColumn (description="Cliente")
     private String client;
     private String zone;
     private String contact;
-    private String phone;
-    private String cellphone;
+    @SwingColumn (description="Telefone 1")
+    private String phone1;
+    private String phone2;
+    @SwingColumn (description="Celular 1")
+    private String cellphone1;
+    private String cellphone2;
+    @SwingColumn (description="e-Mail")
     private String email;
     private String callin;
     private String others;
     private String origin;
+    @SwingColumn (description="CPF/CNPJ")
     private String cpf;
     private String zipcode;
+    @SwingColumn (description="Anotações")
     private String text;
 
     public Integer getId() {
@@ -56,20 +66,36 @@ public class Contacts {
         this.contact = contact;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhone1() {
+        return phone1;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone1(String phone1) {
+        this.phone1 = phone1;
     }
 
-    public String getCellphone() {
-        return cellphone;
+    public String getPhone2() {
+        return phone2;
     }
 
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
+    public void setPhone2(String phone2) {
+        this.phone2 = phone2;
+    }
+
+    public String getCellphone1() {
+        return cellphone1;
+    }
+
+    public void setCellphone1(String cellphone1) {
+        this.cellphone1 = cellphone1;
+    }
+
+    public String getCellphone2() {
+        return cellphone2;
+    }
+
+    public void setCellphone2(String cellphone2) {
+        this.cellphone2 = cellphone2;
     }
 
     public String getEmail() {
@@ -127,6 +153,6 @@ public class Contacts {
     public void setText(String text) {
         this.text = text;
     }
-    
+
     
 }
