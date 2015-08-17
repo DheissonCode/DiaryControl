@@ -46,6 +46,7 @@ public final class MainForm extends javax.swing.JFrame {
         Integer year = datm.getYear();
         preencher_jtable(day, month, year);
         
+
     }
     
 
@@ -65,11 +66,10 @@ public final class MainForm extends javax.swing.JFrame {
         jc_day = new com.toedter.calendar.JDayChooser();
         jc_month = new com.toedter.calendar.JMonthChooser();
         jc_year = new com.toedter.calendar.JYearChooser();
-        jb_consul = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jtf_search = new javax.swing.JTextField();
-        jb_ok = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -126,25 +126,32 @@ public final class MainForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(53, 57, 65));
 
+        jc_day.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jc_dayPropertyChange(evt);
+            }
+        });
+
         jc_month.setDayChooser(jc_day);
+        jc_month.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jc_monthPropertyChange(evt);
+            }
+        });
 
         jc_year.setDayChooser(jc_day);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
         jc_year.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jc_yearPropertyChange(evt);
             }
         });
-=======
->>>>>>> #12.11
-=======
->>>>>>> parent of d882d47... #12.11
 
-        jb_consul.setText("Realizar Consulta !");
+        jButton1.setText("Realizar Consulta !");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -153,12 +160,12 @@ public final class MainForm extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                    .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(129, 129, 129)
-                        .add(jb_consul)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(92, 92, 92)
+                        .add(jButton1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 202, Short.MAX_VALUE)
                         .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -168,7 +175,7 @@ public final class MainForm extends javax.swing.JFrame {
                 .add(11, 11, 11)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jb_consul)
+                    .add(jButton1)
                     .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
@@ -199,21 +206,27 @@ public final class MainForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 500));
-        jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 350, -1));
 
-        jb_ok.setText("Ok !");
-        jb_ok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_okActionPerformed(evt);
+        jtf_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyReleased(evt);
             }
         });
-        jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 17, 60, -1));
+        jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 350, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
         jMenu1.setText("Clientes");
 
         jMenuItem2.setText("Cadastrar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Atualizar");
@@ -258,24 +271,39 @@ public final class MainForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
+    private void jc_dayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_dayPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jc_dayPropertyChange
+
+    private void jc_monthPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_monthPropertyChange
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jc_monthPropertyChange
+
+    private void jc_yearPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_yearPropertyChange
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_jc_yearPropertyChange
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtf_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_searchKeyPressed
+
+    private void jtf_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyReleased
         // TODO add your handling code here:
         search_jtable2(Integer.parseInt(jtf_search.getText()));
-    }//GEN-LAST:event_jb_okActionPerformed
-
-<<<<<<< HEAD
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        new NewContactForm().show();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jtf_searchKeyReleased
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         new NewContactForm().show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-=======
->>>>>>> parent of d882d47... #12.11
     /**
      * @param args the command line arguments
      */
@@ -311,6 +339,7 @@ public final class MainForm extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -328,8 +357,6 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JButton jb_consul;
-    private javax.swing.JButton jb_ok;
     private com.toedter.calendar.JDayChooser jc_day;
     private com.toedter.calendar.JMonthChooser jc_month;
     private com.toedter.calendar.JYearChooser jc_year;
@@ -358,5 +385,4 @@ public final class MainForm extends javax.swing.JFrame {
     }
 
 }
-
 
