@@ -140,7 +140,6 @@ public final class MainForm extends javax.swing.JFrame {
         });
 
         jc_year.setDayChooser(jc_day);
-        jc_year.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jc_year.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jc_yearPropertyChange(evt);
@@ -223,6 +222,11 @@ public final class MainForm extends javax.swing.JFrame {
         jMenu1.setText("Clientes");
 
         jMenuItem2.setText("Cadastrar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Atualizar");
@@ -294,6 +298,11 @@ public final class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         search_jtable2(Integer.parseInt(jtf_search.getText()));
     }//GEN-LAST:event_jtf_searchKeyReleased
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new NewContactForm().show();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

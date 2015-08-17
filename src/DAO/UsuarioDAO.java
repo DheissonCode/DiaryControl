@@ -18,12 +18,12 @@ import java.util.List;
  *
  * @author Igor
  */
-public class UsuarioDAO {
+public class UsuarioDAO extends GenericDAO{
     
     private Connection conectar;
 
     public UsuarioDAO() throws SQLException, IOException {
-        this.conectar = Conexao.getConnection();
+        this.conectar = getConnection();
     }
     
     public boolean logar (Users user) throws SQLException{
