@@ -67,6 +67,9 @@ public final class MainForm extends javax.swing.JFrame {
         jc_month = new com.toedter.calendar.JMonthChooser();
         jc_year = new com.toedter.calendar.JYearChooser();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jtf_search = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -80,9 +83,11 @@ public final class MainForm extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1280, 620));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(38, 40, 43));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1272, 628));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -117,17 +122,15 @@ public final class MainForm extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(610);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 96, 710, 500));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 610, 230));
 
         jPanel2.setBackground(new java.awt.Color(53, 57, 65));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jc_day.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jc_dayPropertyChange(evt);
             }
         });
-        jPanel2.add(jc_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 47, 511, 360));
 
         jc_month.setDayChooser(jc_day);
         jc_month.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -135,7 +138,6 @@ public final class MainForm extends javax.swing.JFrame {
                 jc_monthPropertyChange(evt);
             }
         });
-        jPanel2.add(jc_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, 160, 30));
 
         jc_year.setDayChooser(jc_day);
         jc_year.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -144,7 +146,6 @@ public final class MainForm extends javax.swing.JFrame {
                 jc_yearPropertyChange(evt);
             }
         });
-        jPanel2.add(jc_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 11, 126, 30));
 
         jButton1.setText("Realizar Consulta !");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,11 +153,72 @@ public final class MainForm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 11, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 178, 531, -1));
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(92, 92, 92)
+                        .add(jButton1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 202, Short.MAX_VALUE)
+                        .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .add(11, 11, 11)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton1)
+                    .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 610, 240));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Identificador", "Nota"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable2);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 500));
+
+        jtf_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyReleased(evt);
+            }
+        });
+        jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 350, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
         jMenu1.setText("Clientes");
 
@@ -195,7 +257,7 @@ public final class MainForm extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1173, 667));
+        setSize(new java.awt.Dimension(1311, 667));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -223,6 +285,15 @@ public final class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtf_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_searchKeyPressed
+
+    private void jtf_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyReleased
+        // TODO add your handling code here:
+        search_jtable2(Integer.parseInt(jtf_search.getText()));
+    }//GEN-LAST:event_jtf_searchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -272,12 +343,15 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private com.toedter.calendar.JDayChooser jc_day;
     private com.toedter.calendar.JMonthChooser jc_month;
     private com.toedter.calendar.JYearChooser jc_year;
+    private javax.swing.JTextField jtf_search;
     // End of variables declaration//GEN-END:variables
 
     public void preencher_jtable(Integer day, Integer month, Integer year) 
@@ -289,6 +363,16 @@ public final class MainForm extends javax.swing.JFrame {
         }
         MyTableModel m = new MyTableModel(Event.class, evento, jTable1);
         jTable1.setModel(m);
+    }
+
+    private void search_jtable2(Integer day) {
+                try {
+            evento = eventDAO.getAllEventsPerDate(day);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Event.class, evento, jTable2);
+        jTable2.setModel(m);
     }
 
 }
