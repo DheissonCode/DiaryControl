@@ -1,4 +1,0 @@
-23.88.254.249
-root
-cls112233
-DiaryControl
