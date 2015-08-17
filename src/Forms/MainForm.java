@@ -130,6 +130,9 @@ public final class MainForm extends javax.swing.JFrame {
 
         jc_year.setDayChooser(jc_day);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
         jc_year.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jc_yearPropertyChange(evt);
@@ -261,6 +264,11 @@ public final class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         search_jtable2(Integer.parseInt(jtf_search.getText()));
     }//GEN-LAST:event_jb_okActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new NewContactForm().show();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:

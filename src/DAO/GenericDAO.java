@@ -1,5 +1,11 @@
 package DAO;
 
+<<<<<<< HEAD
+=======
+
+import Entity.ParametrosDb;
+import java.io.IOException;
+>>>>>>> origin/master
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,15 +19,31 @@ import java.util.logging.Logger;
 public abstract class GenericDAO {
     
     private static final long serialVersionId = 1L;
+<<<<<<< HEAD
     
     // método para obter a conexão com o banco de dados
     public Connection getConnection() {
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://23.88.254.249/DiaryControl", "root", "cls112233");
+=======
+    static ConfiguracaoDAO conf = new ConfiguracaoDAO();
+    static ParametrosDb par = new ParametrosDb();
+    // método para obter a conexão com o banco de dados
+    public Connection getConnection() {
+        try {
+            par = conf.loadConf();
+            Connection cn = DriverManager.getConnection("jdbc:mysql://"+par.getUrl()+"/"+par.getDb(), par.getUser(), par.getPass());
+>>>>>>> origin/master
             return cn;
         } catch (SQLException ex) {
             Logger.getLogger(GenericDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+<<<<<<< HEAD
+=======
+        } catch (IOException ex) {
+            Logger.getLogger(GenericDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+>>>>>>> origin/master
         }
     } // fim getConnection
     
