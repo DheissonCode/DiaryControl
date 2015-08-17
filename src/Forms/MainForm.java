@@ -42,11 +42,8 @@ public final class MainForm extends javax.swing.JFrame {
     {
         initComponents();
         Integer day = datm.getDay();
-        System.out.println(day+"\n");
         Integer month = datm.getMonth();
-        System.out.println(month+"\n");
         Integer year = datm.getYear();
-        System.out.println(year+"\n");
         preencher_jtable(day, month, year);
         
 
@@ -83,8 +80,10 @@ public final class MainForm extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(38, 40, 43));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,13 +117,17 @@ public final class MainForm extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(610);
         }
 
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 96, 710, 500));
+
         jPanel2.setBackground(new java.awt.Color(53, 57, 65));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jc_day.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jc_dayPropertyChange(evt);
             }
         });
+        jPanel2.add(jc_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 47, 511, 360));
 
         jc_month.setDayChooser(jc_day);
         jc_month.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -132,6 +135,7 @@ public final class MainForm extends javax.swing.JFrame {
                 jc_monthPropertyChange(evt);
             }
         });
+        jPanel2.add(jc_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, 160, 30));
 
         jc_year.setDayChooser(jc_day);
         jc_year.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -140,67 +144,19 @@ public final class MainForm extends javax.swing.JFrame {
                 jc_yearPropertyChange(evt);
             }
         });
+        jPanel2.add(jc_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 11, 126, 30));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Realizar Consulta !");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 11, -1, -1));
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
-                .add(jButton1)
-                .add(89, 89, 89)
-                .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 126, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jPanel2Layout.createSequentialGroup()
-                            .add(13, 13, 13)
-                            .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 160, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(0, 323, Short.MAX_VALUE)))
-                    .addContainerGap()))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jButton1)
-                    .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(377, Short.MAX_VALUE))
-            .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                    .add(jc_day, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 360, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 178, 531, -1));
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(18, 18, 18)
-                .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(18, 18, 18)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 710, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 500, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenu1.setText("Clientes");
 
@@ -239,17 +195,6 @@ public final class MainForm extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         setSize(new java.awt.Dimension(1173, 667));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -262,39 +207,22 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jc_dayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_dayPropertyChange
         // TODO add your handling code here:
-        System.out.println("Day : "+jc_day.getDay());
-        
-        jc_day.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-              preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
-              //jc_cal.get
-          }
-      });
     }//GEN-LAST:event_jc_dayPropertyChange
 
     private void jc_monthPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_monthPropertyChange
         // TODO add your handling code here:
-                System.out.println("Month : "+(jc_month.getMonth()+1));
-        
-        jc_month.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
-              //jc_cal.get
-          }
-      });
+
     }//GEN-LAST:event_jc_monthPropertyChange
 
     private void jc_yearPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_yearPropertyChange
         // TODO add your handling code here:
-                   System.out.println("Year : "+(jc_year.getYear()));
-        
-        jc_year.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
-              //jc_cal.get
-          }
-      });
+    
     }//GEN-LAST:event_jc_yearPropertyChange
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
