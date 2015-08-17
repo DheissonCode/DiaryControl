@@ -28,7 +28,7 @@ public class EventDAO extends GenericDAO
         //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
         
     }
-    
+        //This is method for populate Taks on MainForm
      public List<Event> getEventList (Integer day, Integer month, Integer year) throws SQLException
     {
         List<Event> events = new LinkedList<Event>();
@@ -59,11 +59,12 @@ public class EventDAO extends GenericDAO
         return events;
     }
     
-        public List<Event> getAllEventsPerDate(Integer day, Integer month, Integer year) throws SQLException 
+    //This is a test
+        public List<Event> getAllEventsPerDate(Integer day) throws SQLException 
     {
         List<Event> events = new LinkedList<Event>();
         
-        ResultSet rs = executeQuery("SELECT * FROM event WHERE day = ?",day+" AND month = ?",month+"% AND year = ?",year);
+        ResultSet rs = executeQuery("SELECT * FROM event WHERE day LIKE ?",day+"%");
                 
                 while(rs.next())
                 {
