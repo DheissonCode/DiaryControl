@@ -15,6 +15,24 @@ public class Data
 {
     public String mes, dia, ano, dia_semana;
     
+    public Integer getDay()
+    {
+        Date data = new Date();
+        return data.getDate();
+    }
+    
+        public Integer getMonth()
+    {
+        Date data = new Date();
+        return (data.getMonth()+1);
+    }
+        
+        public Integer getYear()
+    {
+        Date data = new Date();
+        return (1900 + data.getYear());
+    }
+    
     public void le_data()
     {
         Date data = new Date();
