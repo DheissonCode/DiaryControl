@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import Res.Data;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -26,6 +27,7 @@ import java.beans.PropertyChangeListener;
  */
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -39,7 +41,7 @@ public final class MainForm extends javax.swing.JFrame {
     List<Contacts> contactses;
     
     Data datm = new Data();
-
+    String filter = "NAME";
 
     /**
      * Creates new form MainForm
@@ -174,8 +176,8 @@ public final class MainForm extends javax.swing.JFrame {
                     .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jb_consul)
                     .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -210,6 +212,12 @@ public final class MainForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 500));
+
+        jtf_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyPressed(evt);
+            }
+        });
         jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 430, 30));
 
         jb_ok.setText("Ok !");
@@ -224,7 +232,13 @@ public final class MainForm extends javax.swing.JFrame {
         bg_search.add(jrb_name);
         jrb_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jrb_name.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_name.setSelected(true);
         jrb_name.setText("Nome Cliente");
+        jrb_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_nameActionPerformed(evt);
+            }
+        });
         jPanel1.add(jrb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 130, -1));
 
         jrb_cpf.setBackground(new java.awt.Color(38, 40, 43));
@@ -232,6 +246,11 @@ public final class MainForm extends javax.swing.JFrame {
         jrb_cpf.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jrb_cpf.setForeground(new java.awt.Color(255, 255, 255));
         jrb_cpf.setText("CPF/CNPJ");
+        jrb_cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_cpfActionPerformed(evt);
+            }
+        });
         jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, 120, -1));
 
         jb_callday.setText("Ligações para o dia !");
@@ -293,10 +312,10 @@ public final class MainForm extends javax.swing.JFrame {
         jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu3MenuSelected(evt);
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuBar1.add(jMenu3);
@@ -332,6 +351,9 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jtf_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            jb_okActionPerformed(null);
+        }
     }//GEN-LAST:event_jtf_searchKeyPressed
 
     private void jtf_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyReleased
@@ -345,17 +367,20 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
         // TODO add your handling code here:
-        if(jrb_name.isEnabled())
+        if(filter.equals("NAME"))
         {
             System.out.println("NAME");
         search_jtable2Name(jtf_search.getText());
         } 
         
-            if(jrb_cpf.isEnabled())
+        else if(filter.equals("CPF"))
             {
                 System.out.println("CPF");
                 search_jtable2Cpf(jtf_search.getText());
             }
+        else{
+            JOptionPane.showMessageDialog(null, "Selecione o filtro de pesquisa!!", null, JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_jb_okActionPerformed
 
@@ -379,6 +404,16 @@ public final class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ShowContactForm().show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jrb_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_nameActionPerformed
+        // TODO add your handling code here:
+        filter = "NAME";
+    }//GEN-LAST:event_jrb_nameActionPerformed
+
+    private void jrb_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_cpfActionPerformed
+        // TODO add your handling code here:
+        filter = "CPF";
+    }//GEN-LAST:event_jrb_cpfActionPerformed
 
     /**
      * @param args the command line arguments
