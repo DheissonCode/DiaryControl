@@ -8,11 +8,15 @@ package Forms;
 import DAO.ContactsDAO;
 import Entity.Contacts;
 import Entity.Contacts3;
+import java.awt.Component;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -30,6 +34,32 @@ public class ShowContactForm extends javax.swing.JFrame {
     public ShowContactForm() {
         initComponents();
         preencher_jtableTudo();
+    
+        jTable1.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+ 
+        for (int column = 0; column < jTable1.getColumnCount(); column++)
+        {
+            TableColumn tableColumn = jTable1.getColumnModel().getColumn(column);
+            int preferredWidth = tableColumn.getMinWidth();
+            int maxWidth = tableColumn.getMaxWidth();
+ 
+            for (int row = 0; row < jTable1.getRowCount(); row++)
+            {
+                TableCellRenderer cellRenderer = jTable1.getCellRenderer(row, column);
+                Component c = jTable1.prepareRenderer(cellRenderer, row, column);
+                int width = c.getPreferredSize().width + jTable1.getIntercellSpacing().width;
+                preferredWidth = Math.max(preferredWidth, width);
+ 
+ 
+                    if (preferredWidth >= maxWidth)
+                    {
+                    preferredWidth = maxWidth;
+                    break;
+                    }
+            }
+ 
+            tableColumn.setPreferredWidth( preferredWidth );
+        }
     }
 
     /**
@@ -83,6 +113,7 @@ public class ShowContactForm extends javax.swing.JFrame {
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTable1.setAutoscrolls(false);
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
