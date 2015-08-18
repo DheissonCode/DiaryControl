@@ -81,6 +81,7 @@ public final class MainForm extends javax.swing.JFrame {
         jb_ok = new javax.swing.JButton();
         jrb_name = new javax.swing.JRadioButton();
         jrb_cpf = new javax.swing.JRadioButton();
+        jb_callday = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -92,6 +93,7 @@ public final class MainForm extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 620));
@@ -181,27 +183,34 @@ public final class MainForm extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Cliente", "Telefone 1", "Celular 1", "e-Mail", "CPF/CNPJ", "Anotações"
+                "Cliente", "Endereço", "Telefone 1", "Celular 1", "e-Mail", "CPF/CNPJ", "Anotações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 500));
-        jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 360, 30));
+        jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 430, 30));
 
         jb_ok.setText("Ok !");
         jb_ok.addActionListener(new java.awt.event.ActionListener() {
@@ -209,21 +218,29 @@ public final class MainForm extends javax.swing.JFrame {
                 jb_okActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 60, 30));
+        jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 70, 30));
 
         jrb_name.setBackground(new java.awt.Color(38, 40, 43));
         bg_search.add(jrb_name);
         jrb_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jrb_name.setForeground(new java.awt.Color(255, 255, 255));
         jrb_name.setText("Nome Cliente");
-        jPanel1.add(jrb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 130, -1));
+        jPanel1.add(jrb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 130, -1));
 
         jrb_cpf.setBackground(new java.awt.Color(38, 40, 43));
         bg_search.add(jrb_cpf);
         jrb_cpf.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jrb_cpf.setForeground(new java.awt.Color(255, 255, 255));
         jrb_cpf.setText("CPF/CNPJ");
-        jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 120, -1));
+        jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, 120, -1));
+
+        jb_callday.setText("Ligações para o dia !");
+        jb_callday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_calldayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jb_callday, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
@@ -245,6 +262,11 @@ public final class MainForm extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         jMenuItem5.setText("Visualizar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -267,16 +289,26 @@ public final class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Sair");
+        jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+        });
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1311, 667));
+        setSize(new java.awt.Dimension(1304, 667));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        new LoginForm().show();
-        dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jc_dayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_dayPropertyChange
@@ -332,6 +364,22 @@ public final class MainForm extends javax.swing.JFrame {
         preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
     }//GEN-LAST:event_jb_consulActionPerformed
 
+    private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
+        // TODO add your handling code here:
+        new LoginForm().show();
+            dispose();
+    }//GEN-LAST:event_jMenu3MenuSelected
+
+    private void jb_calldayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_calldayActionPerformed
+        // TODO add your handling code here:
+        new CallDayForm().show();
+    }//GEN-LAST:event_jb_calldayActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new ShowContactForm().show();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,6 +418,7 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_search;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -385,6 +434,7 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton jb_callday;
     private javax.swing.JButton jb_consul;
     private javax.swing.JButton jb_ok;
     private com.toedter.calendar.JDayChooser jc_day;

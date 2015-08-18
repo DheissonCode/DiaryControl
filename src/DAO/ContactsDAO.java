@@ -8,6 +8,8 @@ package DAO;
 import Entity.Contacts;
 import java.sql.SQLException;
 import DAO.GenericDAO;
+import Entity.Contacts2;
+import Entity.Contacts3;
 import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class ContactsDAO extends GenericDAO
         
     }
         //This is method for populate Taks on MainForm
-     public List<Contacts> getContactsList (Integer day, Integer month, Integer year) throws SQLException
+    public List<Contacts> getContactsList (Integer day, Integer month, Integer year) throws SQLException
     {
         List<Contacts> contatu = new LinkedList<Contacts>();
         
@@ -35,11 +37,27 @@ public class ContactsDAO extends GenericDAO
                 
                 while(rs.next())
                 {
-                contatu.add(populateContacts(rs));
+                contatu.add(populateContactsMain(rs));
                 }
                 rs.close();
         return contatu;
     }
+     
+        public List<Contacts2> getContactsCallDay (Integer day, Integer month, Integer year) throws SQLException
+        {
+        List<Contacts2> contatu = new LinkedList<Contacts2>();
+        
+        String query = "SELECT * FROM contacts WHERE day = ? AND month = ? AND year = ?";
+        ResultSet rs = executeQuery(query, day, month, year);
+        //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
+                
+                while(rs.next())
+                {
+                contatu.add(populateContactsCall(rs));
+                }
+                rs.close();
+        return contatu;
+        }
         
     public List<Contacts> getAllContacts() throws SQLException 
     {
@@ -50,6 +68,20 @@ public class ContactsDAO extends GenericDAO
                 while(rs.next())
                 {
                 contatu.add(populateContactsMain(rs));
+                }
+                rs.close();
+        return contatu;
+    }
+    
+    public List<Contacts3> getAllContactsS() throws SQLException 
+    {
+        List<Contacts3> contatu = new LinkedList<Contacts3>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM contacts ");
+                
+                while(rs.next())
+                {
+                contatu.add(populateContactsAll(rs));
                 }
                 rs.close();
         return contatu;
@@ -86,8 +118,8 @@ public class ContactsDAO extends GenericDAO
             
     public Integer addContacts(Contacts contatu ) throws SQLException
     {
-        String query = "INSERT INTO contacts(client, zone, phone1, phone2, cellphone1, cellphone2, email, callin, others, origin, cpf, zipcode, text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        executeComand(query, contatu.getClient(), contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getCallin(), contatu.getOthers(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText());
+        String query = "INSERT INTO contacts(client, address, zone, contact, phone1, phone2, cellphone1, cellphone2, email, day, month, year, origin, cpf, zipcode, text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText());
         return contatu.getId();
         
     }
@@ -95,7 +127,7 @@ public class ContactsDAO extends GenericDAO
     public void updateContacts(Contacts contatu) throws SQLException
     {
         String query = "UPDATE contacts SET day = ?, month = ?, year = ?, notes = ? WHERE id =?";
-        executeComand(query, contatu.getClient(), contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getCallin(), contatu.getOthers(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getId());        
+        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getId());        
         
     }
     
@@ -121,10 +153,37 @@ public class ContactsDAO extends GenericDAO
         
     }
     
-        private Contacts populateContacts(ResultSet rs) throws SQLException {
-        Contacts retorno = new Contacts();
+        private Contacts2 populateContactsCall(ResultSet rs) throws SQLException {
+        Contacts2 retorno = new Contacts2();
         
-        retorno.setId(Integer.parseInt(rs.getString("id")));   
+        retorno.setId(Integer.parseInt(rs.getString("id")));
+        retorno.setClient(rs.getString("client"));
+        retorno.setPhone1(rs.getString("phone1"));
+        retorno.setPhone2(rs.getString("phone2"));
+        retorno.setCellphone1(rs.getString("cellphone1"));
+        retorno.setCellphone2(rs.getString("cellphone2"));
+        
+        return retorno;
+        
+    }
+        
+        private Contacts3 populateContactsAll(ResultSet rs) throws SQLException {
+        Contacts3 retorno = new Contacts3();
+        
+        retorno.setId(Integer.parseInt(rs.getString("id")));
+        retorno.setClient(rs.getString("client"));
+        retorno.setAddress(rs.getString("address"));
+        retorno.setZone(rs.getString("zone"));
+        retorno.setContact(rs.getString("contact"));
+        retorno.setPhone1(rs.getString("phone1"));
+        retorno.setPhone2(rs.getString("phone2"));
+        retorno.setCellphone1(rs.getString("cellphone1"));
+        retorno.setCellphone2(rs.getString("cellphone2"));
+        retorno.setEmail(rs.getString("email"));
+        retorno.setOrigin(rs.getString("origin"));
+        retorno.setCpf(rs.getString("cpf"));
+        retorno.setZipcode(rs.getString("zipcode"));
+        retorno.setText(rs.getString("text"));
         
         return retorno;
         

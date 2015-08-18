@@ -10,31 +10,29 @@ import Forms.SwingColumn;
  *
  * @author zEveerY
  */
-public class Contacts {
+public class Contacts2 {
     
     private Integer id;
     @SwingColumn (description="Cliente")
     private String client;
-    @SwingColumn (description="Endereço")
     private String address;
     private String zone;
     private String contact;
     @SwingColumn (description="Telefone 1")
     private String phone1;
+    @SwingColumn (description="Telefone 2")
     private String phone2;
     @SwingColumn (description="Celular 1")
     private String cellphone1;
+    @SwingColumn (description="Celular 2")
     private String cellphone2;
-    @SwingColumn (description="e-Mail")
     private String email;
     private Integer day;
     private Integer month;
     private Integer year;
     private String origin;
-    @SwingColumn (description="CPF/CNPJ")
     private String cpf;
     private String zipcode;
-    @SwingColumn (description="Anotações")
     private String text;
 
     public Integer getId() {
