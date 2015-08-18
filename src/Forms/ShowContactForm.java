@@ -100,7 +100,7 @@ public class ShowContactForm extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -116,7 +116,6 @@ public class ShowContactForm extends javax.swing.JFrame {
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -134,6 +133,7 @@ public class ShowContactForm extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(8).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(9).setResizable(false);
             jTable1.getColumnModel().getColumn(9).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(10).setResizable(false);
             jTable1.getColumnModel().getColumn(10).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(11).setResizable(false);
             jTable1.getColumnModel().getColumn(11).setPreferredWidth(200);

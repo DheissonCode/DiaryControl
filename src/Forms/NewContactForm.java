@@ -360,17 +360,9 @@ public class NewContactForm extends javax.swing.JFrame {
         String day = ""+d1+""+d2;
         String month = ""+m1+""+m2;
         String year = ""+y1+""+y2+""+y3+""+y4;
-        
-        System.out.println("Day : "+day);
-        System.out.println("Month : "+month);
-        System.out.println("Year : "+year);
-        System.out.println("Day INT : "+Integer.parseInt(day));
-        System.out.println("Month INT : "+Integer.parseInt(month));
-        System.out.println("Year INT : "+Integer.parseInt(year));
-        
+               
         //END 'gambiarra'
         
-      
         contacts.setDay(Integer.parseInt(day));
         contacts.setMonth(Integer.parseInt(month));
         contacts.setYear(Integer.parseInt(year));
@@ -378,7 +370,6 @@ public class NewContactForm extends javax.swing.JFrame {
         contacts.setCpf(jtf_cpf.getText());
         contacts.setZipcode(jft_zip.getText());
         contacts.setText(jta_notes.getText());
-        
         
         contactsDAO.getConnection();
         contactsDAO.addContacts(contacts);
