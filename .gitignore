@@ -1,5 +1,9 @@
 /build/
 /nbproject/
+/nbproject/private/
+/nbproject/private/config.properties
+/nbproject/private/private.properties
+/nbproject/private/private.xml
 /dist/
 src/Res/Thumbs.db
 *.db
