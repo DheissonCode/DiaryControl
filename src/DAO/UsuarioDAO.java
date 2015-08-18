@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,16 +21,12 @@ import java.util.List;
  */
 public class UsuarioDAO extends GenericDAO{
     
-    private Connection conectar;
-
-    public UsuarioDAO() throws SQLException, IOException {
-        this.conectar = getConnection();
-    }
+    
     
     public boolean logar (Users user) throws SQLException{
         String sql = "SELECT * FROM users";
-        PreparedStatement stmt = conectar.prepareCall(sql);
-        ResultSet rs = stmt.executeQuery();
+        
+        ResultSet rs = executeQuery(sql);
         
         while(rs.next()){
             if(user.getLogin().equals(rs.getString("login")) && user.getPassword().equals(rs.getString("password"))){
@@ -52,5 +49,56 @@ public class UsuarioDAO extends GenericDAO{
         
         return toReturn;
       }
+    
+    public List<Users> getAllUsers() throws SQLException 
+    {
+        List<Users> us = new LinkedList<Users>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM users ");
+                
+                while(rs.next())
+                {
+                us.add(populateUsuario(rs));
+                }
+                rs.close();
+        return us;
+    }
+    
+    public Integer addUser(Users us ) throws SQLException
+    {
+        String query = "INSERT INTO users(login, password, name) VALUES (?,?,?)";
+        executeComand(query, us.getLogin(), us.getPassword(), us.getName());
+        return us.getId();
+        
+    }
+    
+    public boolean verifyExistence (Users user) throws SQLException{
+        String sql = "SELECT * FROM users";
+        
+        ResultSet rs = executeQuery(sql);
+        
+        while(rs.next()){
+            if(user.getLogin().equals(rs.getString("login"))){
+                return true;
+            }
+        }
+        return false;
+        
+    }
+    
+    public Integer editUser(Users us) throws SQLException
+    {
+        String query = "UPDATE users SET login = ?, password = ?, name = ? WHERE id =?";
+        executeComand(query, us.getLogin(), us.getPassword(), us.getName(), us.getId());
+        return us.getId();
+        
+    }
+    public void deleteUser(Users us) throws SQLException
+    {
+        String query = "DELETE FROM users where id = ?";
+        executeComand(query, us.getId());
+        
+        
+    }
     
 }

@@ -5,6 +5,8 @@
  */
 package Entity;
 
+import Forms.SwingColumn;
+
 /**
  *
  * @author Igor
@@ -12,8 +14,10 @@ package Entity;
 public class Users {
     
     private Integer id;
+    @SwingColumn (description="Login")
     private String login;
     private String password;
+    @SwingColumn (description="Nome")
     private String name;
 
     public Integer getId() {
