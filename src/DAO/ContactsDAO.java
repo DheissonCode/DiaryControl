@@ -118,8 +118,8 @@ public class ContactsDAO extends GenericDAO
             
     public Integer addContacts(Contacts contatu ) throws SQLException
     {
-        String query = "INSERT INTO contacts(client, address, zone, contact, phone1, phone2, cellphone1, cellphone2, email, day, month, year, origin, cpf, zipcode, text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText());
+        String query = "INSERT INTO contacts(client, address, zone, contact, phone1, phone2, cellphone1, cellphone2, email, day, month, year, origin, cpf, zipcode, text, createdby, editedby) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getCreatedby(), contatu.getEditedby());
         return contatu.getId();
         
     }
