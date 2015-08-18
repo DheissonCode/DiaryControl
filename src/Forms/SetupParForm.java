@@ -138,7 +138,7 @@ public class SetupParForm extends javax.swing.JFrame {
         getContentPane().add(jb_voltar);
         jb_voltar.setBounds(330, 330, 79, 29);
 
-        bg_padraoPequeno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/padraoPequena.png"))); // NOI18N
+        bg_padraoPequeno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/padraoPequena.png"))); // NOI18N
         getContentPane().add(bg_padraoPequeno);
         bg_padraoPequeno.setBounds(0, -60, 500, 540);
 

@@ -5,11 +5,24 @@
  */
 package Forms;
 
+import DAO.ContactsDAO;
+import Entity.Contacts;
+import com.toedter.calendar.JCalendar;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Igor
  */
 public class NewContactForm extends javax.swing.JFrame {
+    Contacts contacts = new Contacts();
+    ContactsDAO contactsDAO = new ContactsDAO();
 
     /**
      * Creates new form NewContactForm
@@ -43,230 +56,138 @@ public class NewContactForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        tf_cliente = new javax.swing.JTextField();
-        tf_endereco = new javax.swing.JTextField();
-        tf_bairro = new javax.swing.JTextField();
-        tf_contato = new javax.swing.JTextField();
-        ff_tel1 = new javax.swing.JFormattedTextField();
-        ff_tel2 = new javax.swing.JFormattedTextField();
-        ff_cel1 = new javax.swing.JFormattedTextField();
-        ff_cel2 = new javax.swing.JFormattedTextField();
-        tf_email = new javax.swing.JTextField();
-        tf_callin = new javax.swing.JTextField();
-        tf_origem = new javax.swing.JTextField();
-        tf_cpfcnpj = new javax.swing.JTextField();
-        ff_cep = new javax.swing.JFormattedTextField();
+        jtf_client = new javax.swing.JTextField();
+        jtf_address = new javax.swing.JTextField();
+        jtf_zone = new javax.swing.JTextField();
+        jtf_contact = new javax.swing.JTextField();
+        jft_phone1 = new javax.swing.JFormattedTextField();
+        jft_phone2 = new javax.swing.JFormattedTextField();
+        jft_cel1 = new javax.swing.JFormattedTextField();
+        jft_cel2 = new javax.swing.JFormattedTextField();
+        jtf_email = new javax.swing.JTextField();
+        jtf_origin = new javax.swing.JTextField();
+        jtf_cpf = new javax.swing.JTextField();
+        jft_zip = new javax.swing.JFormattedTextField();
+        jdc_pick = new com.toedter.calendar.JDateChooser();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ta_notas = new javax.swing.JTextArea();
+        jta_notes = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
         jb_cadastrar = new javax.swing.JButton();
         jb_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setName("Cadastro Clientes"); // NOI18N
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(38, 40, 43));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel1.setText("Cliente:");
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 27, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setText("Endereço:");
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 66, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel3.setText("Bairro:");
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 105, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel4.setText("Contato:");
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 105, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel5.setText("Telefone 1:");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 145, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel6.setText("Telefone 2:");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 145, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel7.setText("Celular 1:");
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 191, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel8.setText("Celular 2:");
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 191, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel9.setText("Email:");
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 233, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel10.setText("Ligar em:");
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 282, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel11.setText("Origem:");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 327, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel12.setText("CPF/CNPJ:");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 372, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel14.setText("CEP:");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 417, -1, -1));
+        jPanel5.add(jtf_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 23, 442, 28));
+        jPanel5.add(jtf_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 62, 442, 28));
+        jPanel5.add(jtf_zone, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 101, 190, 28));
+        jPanel5.add(jtf_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 101, 150, 28));
 
         try {
-            ff_tel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            jft_phone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel5.add(jft_phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 141, 140, 28));
 
         try {
-            ff_tel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            jft_phone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel5.add(jft_phone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 141, 150, 28));
 
         try {
-            ff_cel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jft_cel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel5.add(jft_cel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 187, 138, 28));
 
         try {
-            ff_cel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jft_cel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel5.add(jft_cel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 187, 150, 28));
+        jPanel5.add(jtf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 233, 270, 28));
+        jPanel5.add(jtf_origin, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 323, 270, 28));
+        jPanel5.add(jtf_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 368, 270, 28));
 
         try {
-            ff_cep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            jft_zip.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 50, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_endereco))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_contato))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ff_cel1))
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ff_tel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ff_tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ff_cel2))))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_email))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_callin))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_origem))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_cpfcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ff_cep, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(54, 54, 54))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tf_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tf_endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tf_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(tf_contato, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(ff_tel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(ff_tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(ff_cel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(ff_cel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(tf_callin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(tf_origem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(tf_cpfcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(ff_cep, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel5.add(jft_zip, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 413, 140, 28));
+        jPanel5.add(jdc_pick, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 282, 180, 26));
 
         jTabbedPane1.addTab("Dados", jPanel5);
 
-        ta_notas.setColumns(20);
-        ta_notas.setLineWrap(true);
-        ta_notas.setRows(5);
-        jScrollPane1.setViewportView(ta_notas);
+        jta_notes.setColumns(20);
+        jta_notes.setLineWrap(true);
+        jta_notes.setRows(5);
+        jScrollPane1.setViewportView(jta_notes);
 
         jLabel13.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel13.setText("Notas:");
@@ -299,17 +220,24 @@ public class NewContactForm extends javax.swing.JFrame {
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 630, 480));
 
         jb_cadastrar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jb_cadastrar.setText("Cadastrar");
+        jb_cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/save.png"))); // NOI18N
+        jb_cadastrar.setToolTipText("Cadastrar");
         jb_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_cadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 110, 30));
+        jPanel1.add(jb_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 110, 50));
 
         jb_voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jb_voltar.setText("Voltar");
-        jPanel1.add(jb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, 100, 30));
+        jb_voltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/stop.png"))); // NOI18N
+        jb_voltar.setToolTipText("Cancelar");
+        jb_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_voltarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 110, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 640));
 
@@ -317,8 +245,17 @@ public class NewContactForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cadastrarActionPerformed
-        // TODO add your handling code here:
+        try {
+            save();
+        } catch (SQLException ex) {
+            Logger.getLogger(NewContactForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jb_cadastrarActionPerformed
+
+    private void jb_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_voltarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jb_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,11 +293,6 @@ public class NewContactForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField ff_cel1;
-    private javax.swing.JFormattedTextField ff_cel2;
-    private javax.swing.JFormattedTextField ff_cep;
-    private javax.swing.JFormattedTextField ff_tel1;
-    private javax.swing.JFormattedTextField ff_tel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -382,14 +314,78 @@ public class NewContactForm extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_cadastrar;
     private javax.swing.JButton jb_voltar;
-    private javax.swing.JTextArea ta_notas;
-    private javax.swing.JTextField tf_bairro;
-    private javax.swing.JTextField tf_callin;
-    private javax.swing.JTextField tf_cliente;
-    private javax.swing.JTextField tf_contato;
-    private javax.swing.JTextField tf_cpfcnpj;
-    private javax.swing.JTextField tf_email;
-    private javax.swing.JTextField tf_endereco;
-    private javax.swing.JTextField tf_origem;
+    private com.toedter.calendar.JDateChooser jdc_pick;
+    private javax.swing.JFormattedTextField jft_cel1;
+    private javax.swing.JFormattedTextField jft_cel2;
+    private javax.swing.JFormattedTextField jft_phone1;
+    private javax.swing.JFormattedTextField jft_phone2;
+    private javax.swing.JFormattedTextField jft_zip;
+    private javax.swing.JTextArea jta_notes;
+    private javax.swing.JTextField jtf_address;
+    private javax.swing.JTextField jtf_client;
+    private javax.swing.JTextField jtf_contact;
+    private javax.swing.JTextField jtf_cpf;
+    private javax.swing.JTextField jtf_email;
+    private javax.swing.JTextField jtf_origin;
+    private javax.swing.JTextField jtf_zone;
     // End of variables declaration//GEN-END:variables
+
+    private void save() throws SQLException 
+    {
+                
+        contacts.setClient(jtf_client.getText());
+        contacts.setAddress(jtf_address.getText());
+        contacts.setZone(jtf_zone.getText());
+        contacts.setContact(jtf_contact.getText());
+        contacts.setPhone1(jft_phone1.getText());
+        contacts.setPhone2(jft_phone2.getText());
+        contacts.setCellphone1(jft_cel1.getText());
+        contacts.setCellphone2(jft_cel2.getText());
+        contacts.setEmail(jtf_email.getText());
+        
+        
+        //Here begins the best 'gambiarra' you've ever seen
+        //PLEASE DON'T CHANGE NOTHING BELOW THIS COMMENT
+        
+        Date dataTeste = jdc_pick.getDate();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String datr = formato.format(dataTeste);  
+        char d1 = datr.charAt(0);
+        char d2 = datr.charAt(1);
+        char m1 = datr.charAt(3);
+        char m2 = datr.charAt(4);
+        char y1 = datr.charAt(6);
+        char y2 = datr.charAt(7);
+        char y3 = datr.charAt(8);
+        char y4 = datr.charAt(9);
+        String day = ""+d1+""+d2;
+        String month = ""+m1+""+m2;
+        String year = ""+y1+""+y2+""+y3+""+y4;
+        
+        System.out.println("Day : "+day);
+        System.out.println("Month : "+month);
+        System.out.println("Year : "+year);
+        System.out.println("Day INT : "+Integer.parseInt(day));
+        System.out.println("Month INT : "+Integer.parseInt(month));
+        System.out.println("Year INT : "+Integer.parseInt(year));
+        
+        //END 'gambiarra'
+        
+      
+        contacts.setDay(Integer.parseInt(day));
+        contacts.setMonth(Integer.parseInt(month));
+        contacts.setYear(Integer.parseInt(year));
+        contacts.setOrigin(jtf_origin.getText());
+        contacts.setCpf(jtf_cpf.getText());
+        contacts.setZipcode(jft_zip.getText());
+        contacts.setText(jta_notes.getText());
+        
+        
+        contactsDAO.getConnection();
+        contactsDAO.addContacts(contacts);
+        
+        JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso !");
+      
+        
+    }
 }

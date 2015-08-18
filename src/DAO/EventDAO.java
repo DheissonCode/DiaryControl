@@ -42,6 +42,8 @@ public class EventDAO extends GenericDAO
                 events.add(populateEvent(rs));
                 }
                 rs.close();
+                
+
         return events;
     }
         
@@ -108,5 +110,6 @@ public class EventDAO extends GenericDAO
         return retorno;
         
     }
+    
     
 }

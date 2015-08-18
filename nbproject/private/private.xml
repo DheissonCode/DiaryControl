@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Igor/Documents/NetBeansProjects/DiaryControl/src/Forms/MainForm.java</file>
             <file>file:/C:/Users/Igor/Documents/NetBeansProjects/DiaryControl/src/Forms/NewContactForm.java</file>
+=======
+            <file>file:/C:/Users/zEveerY/Documents/NetBeansProjects/DiaryControl/src/DAO/ConfiguracaoDAO.java</file>
+            <file>file:/C:/Users/zEveerY/Documents/NetBeansProjects/DiaryControl/src/Forms/MainForm.java</file>
+            <file>file:/C:/Users/zEveerY/Documents/NetBeansProjects/DiaryControl/src/Entity/Contacts.java</file>
+            <file>file:/C:/Users/zEveerY/Documents/NetBeansProjects/DiaryControl/src/Forms/LoginForm.java</file>
+            <file>file:/C:/Users/zEveerY/Documents/NetBeansProjects/DiaryControl/src/DAO/ContactsDAO.java</file>
+>>>>>>> f80f2cacaf37adc9875366210b505a7f56ee8e75
         </group>
     </open-files>
 </project-private>
