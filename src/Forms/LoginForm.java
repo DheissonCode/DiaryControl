@@ -153,7 +153,7 @@ public class LoginForm extends javax.swing.JFrame {
         try {
            user = new UsuarioDAO().logar(user); 
            if(user!=null){
-               new MainForm(user.getLogin()).show();
+               new MainForm(user.getName()).show();
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Usuário ou senha incorreto!!", null , JOptionPane.ERROR_MESSAGE);

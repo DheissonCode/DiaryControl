@@ -126,12 +126,12 @@ public class ContactsDAO extends GenericDAO
     
     public void updateContacts(Contacts contatu) throws SQLException
     {
-        String query = "UPDATE contacts SET day = ?, month = ?, year = ?, notes = ? WHERE id =?";
-        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getId());        
+        String query = "UPDATE contacts SET client = ?, address = ?, zone = ?, contact = ?, phone1 = ?, phone2 = ?, cellphone1 = ?, cellphone2 = ?, email = ?,  day = ?, month = ?, year = ?, origin = ?, cpf = ?, zipcode = ?,  text = ?, modified = ? WHERE id =?";
+        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getModified(), contatu.getId());        
         
     }
     
-    public void deleteContacts(Contacts contatu ) throws SQLException
+    public void deleteContacts(Contacts3 contatu ) throws SQLException
     {
         String query = "DELETE FROM contacts WHERE id = ? ";
         executeComand(query, contatu.getId());
@@ -143,11 +143,21 @@ public class ContactsDAO extends GenericDAO
         
         retorno.setId(Integer.parseInt(rs.getString("id")));
         retorno.setClient(rs.getString("client"));
+        retorno.setAddress(rs.getString("address"));
+        retorno.setZone(rs.getString("zone"));
+        retorno.setContact(rs.getString("contact"));
         retorno.setPhone1(rs.getString("phone1"));
+        retorno.setPhone2(rs.getString("phone2"));
         retorno.setCellphone1(rs.getString("cellphone1"));
+        retorno.setCellphone1(rs.getString("cellphone2"));
         retorno.setEmail(rs.getString("email"));
+        retorno.setDay(rs.getInt("day"));
+        retorno.setMonth(rs.getInt("month"));
+        retorno.setYear(rs.getInt("year"));
         retorno.setCpf(rs.getString("cpf"));
+        retorno.setZipcode(rs.getString("zipcode"));
         retorno.setText(rs.getString("text"));
+        retorno.setModified(rs.getString("modified"));
         
         return retorno;
         

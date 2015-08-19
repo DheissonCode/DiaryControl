@@ -7,6 +7,7 @@ package Forms;
 
 import DAO.UsuarioDAO;
 import Entity.Users;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -49,6 +50,8 @@ public class UsersForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_users = new javax.swing.JTable();
+        tf_pesq = new javax.swing.JTextField();
+        jb_ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -58,6 +61,7 @@ public class UsersForm extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
 
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButton1.setMnemonic('N');
         jButton1.setText("Novo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +70,7 @@ public class UsersForm extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButton2.setMnemonic('E');
         jButton2.setText("Editar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +79,7 @@ public class UsersForm extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButton3.setMnemonic('D');
         jButton3.setText("Deletar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +88,7 @@ public class UsersForm extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButton4.setMnemonic('V');
         jButton4.setText("Voltar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,9 +151,23 @@ public class UsersForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
+
+        tf_pesq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_pesqKeyPressed(evt);
+            }
+        });
+
+        jb_ok.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jb_ok.setText("ok!");
+        jb_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_okActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,15 +178,25 @@ public class UsersForm extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(tf_pesq, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jb_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_pesq, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_ok))
+                .addGap(24, 24, 24)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(450, 450, 450))
+                .addGap(418, 418, 418))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,6 +256,18 @@ public class UsersForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void tf_pesqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_pesqKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            jb_okActionPerformed(null);
+        }
+    }//GEN-LAST:event_tf_pesqKeyPressed
+
+    private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
+        // TODO add your handling code here:
+        search_jt_users(tf_pesq.getText());
+    }//GEN-LAST:event_jb_okActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,7 +312,9 @@ public class UsersForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jb_ok;
     private javax.swing.JTable jt_users;
+    private javax.swing.JTextField tf_pesq;
     // End of variables declaration//GEN-END:variables
 
     private void preencher_jtableTudo() {
@@ -288,5 +333,14 @@ public class UsersForm extends javax.swing.JFrame {
        UsuarioDAO dao = new UsuarioDAO();
        dao.deleteUser(user);
    }
-
+   
+   private void search_jt_users(String name) {
+                try {
+            usersTable = userDAO.getAllUsersPerName(name);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Users.class, usersTable, jt_users);
+        jt_users.setModel(m);
+    }
 }

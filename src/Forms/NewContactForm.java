@@ -253,6 +253,8 @@ public class NewContactForm extends javax.swing.JFrame {
     private void jb_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cadastrarActionPerformed
         try {
             save();
+            new ShowContactForm(users.getName()).show();
+            dispose();
         } catch (SQLException ex) {
             Logger.getLogger(NewContactForm.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -54,7 +54,7 @@ public final class MainForm extends javax.swing.JFrame {
     {
         initComponents();
         System.out.println("Teste 1 :"+usa);
-        users.setLogin(usa);
+        users.setName(usa);
         Integer day = datm.getDay();
         Integer month = datm.getMonth();
         Integer year = datm.getYear();
@@ -90,11 +90,10 @@ public final class MainForm extends javax.swing.JFrame {
         jrb_name = new javax.swing.JRadioButton();
         jrb_cpf = new javax.swing.JRadioButton();
         jb_callday = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -235,7 +234,7 @@ public final class MainForm extends javax.swing.JFrame {
                 jb_okActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 70, 30));
+        jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 90, 30));
 
         jrb_name.setBackground(new java.awt.Color(38, 40, 43));
         bg_search.add(jrb_name);
@@ -270,10 +269,19 @@ public final class MainForm extends javax.swing.JFrame {
         });
         jPanel1.add(jb_callday, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 170, 40));
 
+        jButton1.setText("Atualizar !");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 60, 90, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
         jMenu1.setText("Clientes");
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem2.setText("Cadastrar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,14 +289,9 @@ public final class MainForm extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Atualizar");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("Deletar");
-        jMenu1.add(jMenuItem4);
         jMenu1.add(jSeparator1);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem5.setText("Visualizar");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,11 +375,6 @@ public final class MainForm extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jc_yearPropertyChange
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jtf_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -424,7 +422,7 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        new ShowContactForm().show();
+        new ShowContactForm(users.getName()).show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jrb_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_nameActionPerformed
@@ -451,6 +449,11 @@ public final class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         new UsersForm().show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        preencher_jtableTudo();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,14 +492,13 @@ public final class MainForm extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_search;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;

@@ -102,4 +102,18 @@ public class UsuarioDAO extends GenericDAO{
         
     }
     
+    public List<Users> getAllUsersPerName(String name) throws SQLException 
+    {
+        List<Users> us = new LinkedList<Users>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM user WHERE name LIKE ?",name+"%");
+                
+                while(rs.next())
+                {
+                us.add(populateUsuario(rs));
+                }
+                rs.close();
+        return us;
+    }  
+    
 }
