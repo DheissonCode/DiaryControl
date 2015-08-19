@@ -151,8 +151,9 @@ public class LoginForm extends javax.swing.JFrame {
         user.setLogin(tf_user.getText());
         user.setPassword(pf_pass.getText());
         try {
-            if(new UsuarioDAO().logar(user)){
-                new MainForm(user.getLogin()).show();
+           user = new UsuarioDAO().logar(user); 
+           if(user!=null){
+               new MainForm(user.getLogin()).show();
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Usuário ou senha incorreto!!", null , JOptionPane.ERROR_MESSAGE);
