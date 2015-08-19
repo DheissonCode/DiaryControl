@@ -31,6 +31,8 @@ import javax.swing.JOptionPane;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
+import Entity.Users;
+import java.lang.String;
 public final class MainForm extends javax.swing.JFrame {
     
     EventDAO eventDAO = new EventDAO();
@@ -39,16 +41,20 @@ public final class MainForm extends javax.swing.JFrame {
     ContactsDAO contactDAO = new ContactsDAO();
     Contacts contacts = new Contacts();
     List<Contacts> contactses;
+    Users users = new Users();
     
     Data datm = new Data();
     String filter = "NAME";
 
     /**
      * Creates new form MainForm
+     * @param usa
      */
-    public MainForm() 
+    public MainForm(String usa) 
     {
         initComponents();
+        System.out.println("Teste 1 :"+usa);
+        users.setLogin(usa);
         Integer day = datm.getDay();
         Integer month = datm.getMonth();
         Integer year = datm.getYear();
@@ -384,7 +390,7 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        new NewContactForm().show();
+        new NewContactForm(users.getName()).show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
@@ -476,7 +482,8 @@ public final class MainForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainForm().setVisible(true);
+                String String = null;
+                new MainForm(String).setVisible(true);
             }
         });
     }

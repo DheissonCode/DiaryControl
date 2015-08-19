@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author Igor
  */
 public class LoginForm extends javax.swing.JFrame {
+    Users uget = new Users();
 
     /**
      * Creates new form LoginForm
@@ -151,7 +152,7 @@ public class LoginForm extends javax.swing.JFrame {
         user.setPassword(pf_pass.getText());
         try {
             if(new UsuarioDAO().logar(user)){
-                new MainForm().show();
+                new MainForm(user.getLogin()).show();
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Usuário ou senha incorreto!!", null , JOptionPane.ERROR_MESSAGE);

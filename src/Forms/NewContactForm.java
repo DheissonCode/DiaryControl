@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import Entity.Users;
 
 /**
  *
@@ -23,13 +24,17 @@ import javax.swing.JTextField;
 public class NewContactForm extends javax.swing.JFrame {
     Contacts contacts = new Contacts();
     ContactsDAO contactsDAO = new ContactsDAO();
+    Users users = new Users();
 
     /**
      * Creates new form NewContactForm
      */
-    public NewContactForm() {
+    public NewContactForm(String txt) {
         initComponents();
+        users.setName(txt);
+        //jl_res.setText(users.getName());
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -288,7 +293,8 @@ public class NewContactForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewContactForm().setVisible(true);
+                String String = null;
+                new NewContactForm(String).setVisible(true);
             }
         });
     }
@@ -372,6 +378,7 @@ public class NewContactForm extends javax.swing.JFrame {
         contacts.setCpf(jtf_cpf.getText());
         contacts.setZipcode(jft_zip.getText());
         contacts.setText(jta_notes.getText());
+        contacts.setModified(users.getLogin());
         
         contactsDAO.getConnection();
         contactsDAO.addContacts(contacts);
@@ -380,4 +387,5 @@ public class NewContactForm extends javax.swing.JFrame {
       
         
     }
+
 }
