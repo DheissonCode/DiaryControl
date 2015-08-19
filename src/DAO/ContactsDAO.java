@@ -118,13 +118,8 @@ public class ContactsDAO extends GenericDAO
             
     public Integer addContacts(Contacts contatu ) throws SQLException
     {
-<<<<<<< HEAD
         String query = "INSERT INTO contacts(client, address, zone, contact, phone1, phone2, cellphone1, cellphone2, email, day, month, year, origin, cpf, zipcode, text, modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getModified());
-=======
-        String query = "INSERT INTO contacts(client, address, zone, contact, phone1, phone2, cellphone1, cellphone2, email, day, month, year, origin, cpf, zipcode, text, createdby, editedby) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getCreatedby(), contatu.getEditedby());
->>>>>>> 1d3b41bcee3ebc538680e7228338a33e56dafdda
         return contatu.getId();
         
     }

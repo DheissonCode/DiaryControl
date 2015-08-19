@@ -1,3 +1,4 @@
+NewContactForm
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,7 +8,6 @@ package Forms;
 
 import DAO.ContactsDAO;
 import Entity.Contacts;
-import Entity.Users;
 import com.toedter.calendar.JCalendar;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -25,7 +25,6 @@ import Entity.Users;
 public class NewContactForm extends javax.swing.JFrame {
     Contacts contacts = new Contacts();
     ContactsDAO contactsDAO = new ContactsDAO();
-<<<<<<< HEAD
     Users users = new Users();
 
     /**
@@ -35,15 +34,6 @@ public class NewContactForm extends javax.swing.JFrame {
         initComponents();
         users.setName(txt);
         //jl_res.setText(users.getName());
-=======
-    Users sessao = new Users();
-    /**
-     * Creates new form NewContactForm
-     */
-    public NewContactForm(Users user) {
-        initComponents();
-        this.sessao = user;
->>>>>>> 1d3b41bcee3ebc538680e7228338a33e56dafdda
     }
 
 
@@ -277,7 +267,6 @@ public class NewContactForm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-<<<<<<< HEAD
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -310,39 +299,6 @@ public class NewContactForm extends javax.swing.JFrame {
             }
         });
     }
-=======
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new NewContactForm().setVisible(true);
-//            }
-//        });
-//    }
->>>>>>> 1d3b41bcee3ebc538680e7228338a33e56dafdda
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -394,8 +350,7 @@ public class NewContactForm extends javax.swing.JFrame {
         contacts.setCellphone1(jft_cel1.getText());
         contacts.setCellphone2(jft_cel2.getText());
         contacts.setEmail(jtf_email.getText());
-        contacts.setCreatedby(sessao.getName());
-        contacts.setEditedby(sessao.getName());
+        
         
         //Here begins the best 'gambiarra' you've ever seen
         //PLEASE DON'T CHANGE NOTHING BELOW THIS COMMENT

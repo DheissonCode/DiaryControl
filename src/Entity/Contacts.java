@@ -36,30 +36,7 @@ public class Contacts {
     private String zipcode;
     @SwingColumn (description="Anotações")
     private String text;
-<<<<<<< HEAD
     private String modified;
-=======
-    @SwingColumn (description="Criado por")
-    private String createdby;
-    @SwingColumn (description="Editado por")
-    private String editedby;
-
-    public String getCreatedby() {
-        return createdby;
-    }
-
-    public void setCreatedby(String createdby) {
-        this.createdby = createdby;
-    }
-
-    public String getEditedby() {
-        return editedby;
-    }
-
-    public void setEditedby(String editedby) {
-        this.editedby = editedby;
-    }
->>>>>>> 1d3b41bcee3ebc538680e7228338a33e56dafdda
 
     public Integer getId() {
         return id;
