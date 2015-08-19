@@ -23,17 +23,18 @@ public class UsuarioDAO extends GenericDAO{
     
     
     
-    public boolean logar (Users user) throws SQLException{
+    public Users logar (Users user) throws SQLException{
         String sql = "SELECT * FROM users";
         
         ResultSet rs = executeQuery(sql);
         
         while(rs.next()){
             if(user.getLogin().equals(rs.getString("login")) && user.getPassword().equals(rs.getString("password"))){
-                return true;
+                user = populateUsuario(rs);
+                return user;
             }
         }
-        return false;
+        return null;
         
     }
     
