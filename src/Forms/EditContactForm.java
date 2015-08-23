@@ -7,6 +7,7 @@ package Forms;
 
 import DAO.ContactsDAO;
 import Entity.Contacts;
+import Entity.Contacts3;
 import com.toedter.calendar.JCalendar;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -16,27 +17,33 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import Entity.Users;
-import java.text.ParseException;
 import java.util.Calendar;
 
 /**
  *
  * @author Igor
  */
-public class NewContactForm extends javax.swing.JFrame {
-    Contacts contacts = new Contacts();
+public class EditContactForm extends javax.swing.JFrame {
+    Contacts3 contacts = new Contacts3();
     ContactsDAO contactsDAO = new ContactsDAO();
+    Contacts3 contas = new Contacts3();
     Users users = new Users();
 
     /**
      * Creates new form NewContactForm
-     * @param users
+     * @param user
+     * @param conta
      */
-    public NewContactForm(Users users) {
+    
+    public EditContactForm(Users user, Contacts3 conta) {
         initComponents();
-        this.users = users;
+        users = user;
+        contas = conta;
+        carregar();
+        System.out.println("T : "+users.getName());
+        System.out.println("A : "+contas.getClient());
+        //users.setName(txt);
         //jl_res.setText(users.getName());
-
     }
 
 
@@ -84,6 +91,8 @@ public class NewContactForm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jb_cadastrar = new javax.swing.JButton();
         jb_voltar = new javax.swing.JButton();
+        jl_mod = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -248,6 +257,17 @@ public class NewContactForm extends javax.swing.JFrame {
         });
         jPanel1.add(jb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 110, 50));
 
+        jl_mod.setBackground(new java.awt.Color(102, 153, 255));
+        jl_mod.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jl_mod.setForeground(new java.awt.Color(102, 153, 255));
+        jPanel1.add(jl_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 210, 20));
+
+        jLabel16.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel16.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel16.setText("Ultima Alteração por : ");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 640));
 
         pack();
@@ -259,9 +279,7 @@ public class NewContactForm extends javax.swing.JFrame {
             save();
             dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(NewContactForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(NewContactForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditContactForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jb_cadastrarActionPerformed
 
@@ -287,21 +305,23 @@ public class NewContactForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditContactForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Entity.Users user = new Users();
-                new NewContactForm(user).setVisible(true);
+                Entity.Contacts3 contas = new Contacts3();
+                new EditContactForm(user, contas).setVisible(true);
             }
         });
     }
@@ -313,6 +333,7 @@ public class NewContactForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -334,6 +355,7 @@ public class NewContactForm extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jft_phone1;
     private javax.swing.JFormattedTextField jft_phone2;
     private javax.swing.JFormattedTextField jft_zip;
+    private javax.swing.JLabel jl_mod;
     private javax.swing.JTextArea jta_notes;
     private javax.swing.JTextField jtf_address;
     private javax.swing.JTextField jtf_client;
@@ -344,9 +366,9 @@ public class NewContactForm extends javax.swing.JFrame {
     private javax.swing.JTextField jtf_zone;
     // End of variables declaration//GEN-END:variables
 
-    private void save() throws SQLException, ParseException 
+    private void save() throws SQLException 
     {
-          
+                
         contacts.setClient(jtf_client.getText());
         contacts.setAddress(jtf_address.getText());
         contacts.setZone(jtf_zone.getText());
@@ -375,6 +397,7 @@ public class NewContactForm extends javax.swing.JFrame {
         String day = ""+d1+""+d2;
         String month = ""+m1+""+m2;
         String year = ""+y1+""+y2+""+y3+""+y4;
+               
         //END 'gambiarra'
         
         contacts.setDay(Integer.parseInt(day));
@@ -385,13 +408,49 @@ public class NewContactForm extends javax.swing.JFrame {
         contacts.setZipcode(jft_zip.getText());
         contacts.setText(jta_notes.getText());
         contacts.setModified(users.getName());
+        System.out.println("3 : "+users.getName());
         
         contactsDAO.getConnection();
-        contactsDAO.addContacts(contacts);
+        contactsDAO.updateContacts(contacts);
         
-        JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso !");
-              
+        JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso !");
+      
         
     }
+
+      public void carregar(){
+      
+          System.out.println(contas.getClient());
+        
+        jtf_client.setText(contas.getClient());
+        jtf_address.setText(contas.getAddress());
+        jtf_zone.setText(contas.getZone());
+        jtf_contact.setText(contas.getContact());
+        jft_phone1.setText(contas.getPhone1());
+        jft_phone2.setText(contas.getPhone2());
+        jft_cel1.setText(contas.getCellphone1());
+        jft_cel2.setText(contas.getCellphone2());
+        jtf_email.setText(contas.getEmail());
+        jtf_origin.setText(contas.getOrigin());
+        jtf_cpf.setText(contas.getCpf());
+        jft_zip.setText(contas.getZipcode());
+        jta_notes.setText(contas.getText());
+        jl_mod.setText(contas.getModified());
+        System.out.println("Modificado :"+contas.getModified());
+      
+
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+
+        String currentYear = ""+contas.getYear();
+        String currentMonth = ""+contas.getMonth();
+        String currentDate= ""+contas.getDay();
+
+        calendar.set(Integer.parseInt(currentYear), Integer.parseInt(currentMonth), Integer.parseInt(currentDate));
+        date.setTime(calendar.getTimeInMillis());
+
+        jdc_pick.setDate(date);
+        
+    }    
 
 }

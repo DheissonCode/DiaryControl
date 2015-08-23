@@ -32,6 +32,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import Entity.Users;
+import java.awt.Color;
 import java.lang.String;
 public final class MainForm extends javax.swing.JFrame {
     
@@ -50,16 +51,17 @@ public final class MainForm extends javax.swing.JFrame {
      * Creates new form MainForm
      * @param usa
      */
-    public MainForm(String usa) 
+    public MainForm(Users user) 
     {
         initComponents();
-        System.out.println("Teste 1 :"+usa);
-        users.setName(usa);
+        System.out.println("Teste 1 :"+user.getName());
+        //users.setName(usa);
         Integer day = datm.getDay();
         Integer month = datm.getMonth();
         Integer year = datm.getYear();
         preencher_jtable(day, month, year);
         preencher_jtableTudo();
+        users = user;
         
 
     }
@@ -93,12 +95,8 @@ public final class MainForm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmi_cli = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -281,58 +279,43 @@ public final class MainForm extends javax.swing.JFrame {
 
         jMenu1.setText("Clientes");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem2.setText("Cadastrar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmi_cli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jmi_cli.setText("Gerenciar Clientes");
+        jmi_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmi_cliActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator1);
-
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem5.setText("Visualizar");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem5);
+        jMenu1.add(jmi_cli);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Agenda");
 
-        jMenuItem1.setText("Cadastrar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem7.setText("Gerenciar Agenda");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
-
-        jMenuItem6.setText("Atualizar");
-        jMenu2.add(jMenuItem6);
-
-        jMenuItem7.setText("Deletar");
         jMenu2.add(jMenuItem7);
 
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("Outros");
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
-            }
         });
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem8.setText("Usuários");
+        jMenuItem8.setText("Gerenciar Usuários");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -356,10 +339,6 @@ public final class MainForm extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1304, 667));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jc_dayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jc_dayPropertyChange
         // TODO add your handling code here:
@@ -385,11 +364,6 @@ public final class MainForm extends javax.swing.JFrame {
     private void jtf_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_jtf_searchKeyReleased
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        new NewContactForm(users.getName()).show();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
         // TODO add your handling code here:
@@ -420,10 +394,10 @@ public final class MainForm extends javax.swing.JFrame {
         new CallDayForm().show();
     }//GEN-LAST:event_jb_calldayActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jmi_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cliActionPerformed
         // TODO add your handling code here:
-        new ShowContactForm(users.getName()).show();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        new ShowContactForm(users).show();
+    }//GEN-LAST:event_jmi_cliActionPerformed
 
     private void jrb_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_nameActionPerformed
         // TODO add your handling code here:
@@ -455,6 +429,11 @@ public final class MainForm extends javax.swing.JFrame {
         preencher_jtableTudo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        new ShowEventForm(users).show();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -485,8 +464,8 @@ public final class MainForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String String = null;
-                new MainForm(String).setVisible(true);
+                Entity.Users user = new Users();
+                new MainForm(user).setVisible(true);
             }
         });
     }
@@ -497,10 +476,6 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
@@ -508,7 +483,6 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton jb_callday;
@@ -517,6 +491,7 @@ public final class MainForm extends javax.swing.JFrame {
     private com.toedter.calendar.JDayChooser jc_day;
     private com.toedter.calendar.JMonthChooser jc_month;
     private com.toedter.calendar.JYearChooser jc_year;
+    private javax.swing.JMenuItem jmi_cli;
     private javax.swing.JRadioButton jrb_cpf;
     private javax.swing.JRadioButton jrb_name;
     private javax.swing.JTextField jtf_search;

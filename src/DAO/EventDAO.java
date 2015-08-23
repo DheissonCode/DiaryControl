@@ -12,6 +12,7 @@ package DAO;
 import Entity.Event;
 import java.sql.SQLException;
 import DAO.GenericDAO;
+import Entity.Event2;
 import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -61,6 +62,20 @@ public class EventDAO extends GenericDAO
         return events;
     }
     
+     public List<Event2> getAllEventDayB() throws SQLException 
+    {
+        List<Event2> events = new LinkedList<Event2>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM event ");
+                
+                while(rs.next())
+                {
+                events.add(populateEventB(rs));
+                }
+                rs.close();
+        return events;
+    }
+    
     //This is a test
         public List<Event> getAllEventsPerDate(Integer day) throws SQLException 
     {
@@ -76,7 +91,7 @@ public class EventDAO extends GenericDAO
         return events;
     }   
             
-    public Integer addEvent(Event events ) throws SQLException
+    public Integer addEvent(Event2 events ) throws SQLException
     {
         String query = "INSERT INTO event(day, month, year, notes) VALUES (?,?,?,?)";
         executeComand(query, events.getDay(), events.getMonth(), events.getYear(), events.getNotes());
@@ -91,7 +106,7 @@ public class EventDAO extends GenericDAO
         
     }
     
-    public void deleteEvent(Event events ) throws SQLException
+    public void deleteEvent(Event2 events ) throws SQLException
     {
         String query = "DELETE FROM event WHERE id = ? ";
         executeComand(query, events.getId());
@@ -100,6 +115,18 @@ public class EventDAO extends GenericDAO
 
     private Event populateEvent(ResultSet rs) throws SQLException {
         Event retorno = new Event();
+        
+        retorno.setId(Integer.parseInt(rs.getString("id")));
+        retorno.setDay(Integer.parseInt(rs.getString("day")));
+        retorno.setMonth(Integer.parseInt(rs.getString("month")));
+        retorno.setYear(Integer.parseInt(rs.getString("year")));
+        retorno.setNotes(rs.getString("notes"));     
+        
+        return retorno;
+        
+    }
+        private Event2 populateEventB(ResultSet rs) throws SQLException {
+        Event2 retorno = new Event2();
         
         retorno.setId(Integer.parseInt(rs.getString("id")));
         retorno.setDay(Integer.parseInt(rs.getString("day")));

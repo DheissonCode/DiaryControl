@@ -124,7 +124,7 @@ public class ContactsDAO extends GenericDAO
         
     }
     
-    public void updateContacts(Contacts contatu) throws SQLException
+    public void updateContacts(Contacts3 contatu) throws SQLException
     {
         String query = "UPDATE contacts SET client = ?, address = ?, zone = ?, contact = ?, phone1 = ?, phone2 = ?, cellphone1 = ?, cellphone2 = ?, email = ?,  day = ?, month = ?, year = ?, origin = ?, cpf = ?, zipcode = ?,  text = ?, modified = ? WHERE id =?";
         executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getModified(), contatu.getId());        
@@ -190,10 +190,14 @@ public class ContactsDAO extends GenericDAO
         retorno.setCellphone1(rs.getString("cellphone1"));
         retorno.setCellphone2(rs.getString("cellphone2"));
         retorno.setEmail(rs.getString("email"));
+        retorno.setDay(Integer.parseInt(rs.getString("day")));
+        retorno.setMonth(Integer.parseInt(rs.getString("month")));
+        retorno.setYear(Integer.parseInt(rs.getString("year")));
         retorno.setOrigin(rs.getString("origin"));
         retorno.setCpf(rs.getString("cpf"));
         retorno.setZipcode(rs.getString("zipcode"));
         retorno.setText(rs.getString("text"));
+        retorno.setModified(rs.getString("modified"));
         
         return retorno;
         

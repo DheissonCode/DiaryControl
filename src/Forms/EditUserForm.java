@@ -24,6 +24,7 @@ public class EditUserForm extends javax.swing.JFrame {
      */
     Users user = new Users();
     String userAntigo = "";
+    
     public EditUserForm(Users user) {
         initComponents();
         this.user = user;
@@ -273,6 +274,7 @@ public class EditUserForm extends javax.swing.JFrame {
         tf_nome.setText(user.getName());
         tf_login.setText(user.getLogin());
     }
+    
     public boolean edit() throws SQLException{
     UsuarioDAO dao = new UsuarioDAO();
     if(dao.verifyExistence(user) && !user.getLogin().equals(userAntigo)){

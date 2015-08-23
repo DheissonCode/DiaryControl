@@ -106,7 +106,7 @@ public class UsuarioDAO extends GenericDAO{
     {
         List<Users> us = new LinkedList<Users>();
         
-        ResultSet rs = executeQuery("SELECT * FROM user WHERE name LIKE ?",name+"%");
+        ResultSet rs = executeQuery("SELECT * FROM users WHERE name LIKE ?",name+"%");
                 
                 while(rs.next())
                 {

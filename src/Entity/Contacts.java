@@ -5,6 +5,7 @@
 package Entity;
 
 import Forms.SwingColumn;
+import java.sql.Date;
 
 /**
  *
@@ -37,6 +38,7 @@ public class Contacts {
     @SwingColumn (description="Anotações")
     private String text;
     private String modified;
+    private Date data;
 
     public Integer getId() {
         return id;

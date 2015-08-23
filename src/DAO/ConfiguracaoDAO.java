@@ -21,8 +21,9 @@ public class ConfiguracaoDAO {
 
     private File file;
 
-    public void readFile() {
-        file = new File("src/res/parametros.txt");         
+    public void readFile() throws IOException {
+        file = new File("src/Res/parametros.txt");
+        System.out.println(file.getCanonicalPath());
     }
     public ParametrosDb loadConf() throws IOException {
         readFile();
@@ -39,7 +40,7 @@ public class ConfiguracaoDAO {
         return bd;
     }
     
-    public void writeConf(ParametrosDb bd) throws FileNotFoundException {
+    public void writeConf(ParametrosDb bd) throws FileNotFoundException, IOException {
         readFile();
         PrintWriter printFile = new PrintWriter(file);
             printFile.println(bd.getUrl());

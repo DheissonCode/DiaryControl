@@ -43,6 +43,8 @@ public class Contacts3 {
     private String zipcode;
     @SwingColumn (description="Anotação")
     private String text;
+    @SwingColumn (description="Modificado")
+    private String modified;
     
     public Integer getId() {
         return id;
@@ -178,6 +180,14 @@ public class Contacts3 {
 
     public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
     }
 
     

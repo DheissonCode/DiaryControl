@@ -49,7 +49,7 @@ public class LoginForm extends javax.swing.JFrame {
         mi_configConexao = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(566, 371));
+        setTitle("Login");
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -153,7 +153,7 @@ public class LoginForm extends javax.swing.JFrame {
         try {
            user = new UsuarioDAO().logar(user); 
            if(user!=null){
-               new MainForm(user.getName()).show();
+               new MainForm(user).show();
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Usuário ou senha incorreto!!", null , JOptionPane.ERROR_MESSAGE);
