@@ -93,6 +93,7 @@ public final class MainForm extends javax.swing.JFrame {
         jrb_cpf = new javax.swing.JRadioButton();
         jb_callday = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jl_clientecont = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_cli = new javax.swing.JMenuItem();
@@ -275,6 +276,11 @@ public final class MainForm extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 60, 90, -1));
 
+        jl_clientecont.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jl_clientecont.setForeground(new java.awt.Color(255, 255, 255));
+        jl_clientecont.setText("Clientes na tabela: ");
+        jPanel1.add(jl_clientecont, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 60, 170, 20));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
         jMenu1.setText("Clientes");
@@ -305,12 +311,12 @@ public final class MainForm extends javax.swing.JFrame {
 
         jMenu4.setText("Outros");
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
             }
         });
 
@@ -491,6 +497,7 @@ public final class MainForm extends javax.swing.JFrame {
     private com.toedter.calendar.JDayChooser jc_day;
     private com.toedter.calendar.JMonthChooser jc_month;
     private com.toedter.calendar.JYearChooser jc_year;
+    private javax.swing.JLabel jl_clientecont;
     private javax.swing.JMenuItem jmi_cli;
     private javax.swing.JRadioButton jrb_cpf;
     private javax.swing.JRadioButton jrb_name;
@@ -506,6 +513,7 @@ public final class MainForm extends javax.swing.JFrame {
         }
         MyTableModel m = new MyTableModel(Event.class, evento, jTable1);
         jTable1.setModel(m);
+        
     }
 
     private void search_jtable2Name(String name) {
@@ -516,6 +524,7 @@ public final class MainForm extends javax.swing.JFrame {
         }
         MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
         jTable2.setModel(m);
+        jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
     }
     
         private void search_jtable2Cpf(String cpf) {
@@ -526,6 +535,7 @@ public final class MainForm extends javax.swing.JFrame {
         }
         MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
         jTable2.setModel(m);
+        jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
     }
 
     private void preencher_jtableTudo() {
@@ -538,6 +548,9 @@ public final class MainForm extends javax.swing.JFrame {
         }
         MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
         jTable2.setModel(m);
+        
+        jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+        
     }
 
 }
