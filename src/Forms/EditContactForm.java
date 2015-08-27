@@ -369,15 +369,15 @@ public class EditContactForm extends javax.swing.JFrame {
     private void save() throws SQLException 
     {
                 
-        contacts.setClient(jtf_client.getText());
-        contacts.setAddress(jtf_address.getText());
-        contacts.setZone(jtf_zone.getText());
-        contacts.setContact(jtf_contact.getText());
-        contacts.setPhone1(jft_phone1.getText());
-        contacts.setPhone2(jft_phone2.getText());
-        contacts.setCellphone1(jft_cel1.getText());
-        contacts.setCellphone2(jft_cel2.getText());
-        contacts.setEmail(jtf_email.getText());
+        contas.setClient(jtf_client.getText());
+        contas.setAddress(jtf_address.getText());
+        contas.setZone(jtf_zone.getText());
+        contas.setContact(jtf_contact.getText());
+        contas.setPhone1(jft_phone1.getText());
+        contas.setPhone2(jft_phone2.getText());
+        contas.setCellphone1(jft_cel1.getText());
+        contas.setCellphone2(jft_cel2.getText());
+        contas.setEmail(jtf_email.getText());
         
         
         //Here begins the best 'gambiarra' you've ever seen
@@ -400,18 +400,18 @@ public class EditContactForm extends javax.swing.JFrame {
                
         //END 'gambiarra'
         
-        contacts.setDay(Integer.parseInt(day));
-        contacts.setMonth(Integer.parseInt(month));
-        contacts.setYear(Integer.parseInt(year));
-        contacts.setOrigin(jtf_origin.getText());
-        contacts.setCpf(jtf_cpf.getText());
-        contacts.setZipcode(jft_zip.getText());
-        contacts.setText(jta_notes.getText());
-        contacts.setModified(users.getName());
+        contas.setDay(Integer.parseInt(day));
+        contas.setMonth(Integer.parseInt(month));
+        contas.setYear(Integer.parseInt(year));
+        contas.setOrigin(jtf_origin.getText());
+        contas.setCpf(jtf_cpf.getText());
+        contas.setZipcode(jft_zip.getText());
+        contas.setText(jta_notes.getText());
+        contas.setModified(users.getName());
         System.out.println("3 : "+users.getName());
         
         contactsDAO.getConnection();
-        contactsDAO.updateContacts(contacts);
+        contactsDAO.updateContacts(contas);
         
         JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso !");
       
