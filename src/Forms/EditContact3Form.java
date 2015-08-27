@@ -23,10 +23,10 @@ import java.util.Calendar;
  *
  * @author Igor
  */
-public class EditContactForm extends javax.swing.JFrame {
-    Contacts3 contacts = new Contacts3();
+public class EditContact3Form extends javax.swing.JFrame {
+    Contacts contacts = new Contacts();
     ContactsDAO contactsDAO = new ContactsDAO();
-    Contacts3 contas = new Contacts3();
+    Contacts contas = new Contacts();
     Users users = new Users();
 
     /**
@@ -35,7 +35,7 @@ public class EditContactForm extends javax.swing.JFrame {
      * @param conta
      */
     
-    public EditContactForm(Users user, Contacts3 conta) {
+    public EditContact3Form(Users user, Contacts conta) {
         initComponents();
         users = user;
         contas = conta;
@@ -411,7 +411,7 @@ public class EditContactForm extends javax.swing.JFrame {
         System.out.println("3 : "+users.getName());
         
         contactsDAO.getConnection();
-        contactsDAO.updateContacts3(contas);
+        contactsDAO.updateContacts(contas);
         
         JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso !");
       

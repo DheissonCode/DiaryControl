@@ -166,6 +166,8 @@ public class SetupParForm extends javax.swing.JFrame {
             Logger.getLogger(SetupParForm.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Parâmetros alterados com sucesso!!", null, JOptionPane.ERROR_MESSAGE);
             tf_url.grabFocus();
+        } catch (IOException ex) {
+            Logger.getLogger(SetupParForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jb_salvarActionPerformed

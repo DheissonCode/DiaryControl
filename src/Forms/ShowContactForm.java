@@ -122,6 +122,11 @@ public class ShowContactForm extends javax.swing.JFrame {
         jTable1.setAutoscrolls(false);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setSelectionBackground(new java.awt.Color(144, 184, 248));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -268,6 +273,17 @@ public class ShowContactForm extends javax.swing.JFrame {
            dispose();
         }
     }//GEN-LAST:event_jb_editActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        if(jTable1.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Cliente!!", null, JOptionPane.ERROR_MESSAGE);
+        }else{
+           contacts = contactses.get(jTable1.getSelectedRow());
+           new EditContactForm(users, contacts).show();
+           dispose();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

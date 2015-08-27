@@ -8,6 +8,7 @@ import DAO.EventDAO;
 import Entity.Event;
 import DAO.ContactsDAO;
 import Entity.Contacts;
+import Entity.Contacts3;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +42,9 @@ public final class MainForm extends javax.swing.JFrame {
     List<Event> evento;
     ContactsDAO contactDAO = new ContactsDAO();
     Contacts contacts = new Contacts();
+    Contacts3 cont = new Contacts3();
     List<Contacts> contactses;
+    List<Contacts3> contactses3;
     Users users = new Users();
     
     Data datm = new Data();
@@ -214,6 +217,11 @@ public final class MainForm extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable2);
@@ -439,6 +447,16 @@ public final class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ShowEventForm(users).show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        if(jTable2.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Cliente!!", null, JOptionPane.ERROR_MESSAGE);
+        }else{
+           contacts = contactses.get(jTable2.getSelectedRow());
+           new EditContact3Form(users, contacts).show();
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments

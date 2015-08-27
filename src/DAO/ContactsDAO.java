@@ -124,7 +124,13 @@ public class ContactsDAO extends GenericDAO
         
     }
     
-    public void updateContacts(Contacts3 contatu) throws SQLException
+    public void updateContacts3(Contacts3 contatu) throws SQLException
+    {
+        String query = "UPDATE contacts SET client = ?, address = ?, zone = ?, contact = ?, phone1 = ?, phone2 = ?, cellphone1 = ?, cellphone2 = ?, email = ?,  day = ?, month = ?, year = ?, origin = ?, cpf = ?, zipcode = ?,  text = ?, modified = ? WHERE id =?";
+        executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getModified(), contatu.getId());        
+        
+    }
+    public void updateContacts(Contacts contatu) throws SQLException
     {
         String query = "UPDATE contacts SET client = ?, address = ?, zone = ?, contact = ?, phone1 = ?, phone2 = ?, cellphone1 = ?, cellphone2 = ?, email = ?,  day = ?, month = ?, year = ?, origin = ?, cpf = ?, zipcode = ?,  text = ?, modified = ? WHERE id =?";
         executeComand(query, contatu.getClient(), contatu.getAddress(),contatu.getZone(), contatu.getContact(), contatu.getPhone1(), contatu.getPhone2(), contatu.getCellphone1(), contatu.getCellphone2(), contatu.getEmail(), contatu.getDay(), contatu.getMonth(), contatu.getYear(), contatu.getOrigin(), contatu.getCpf(), contatu.getZipcode(), contatu.getText(), contatu.getModified(), contatu.getId());        
