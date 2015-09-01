@@ -14,7 +14,6 @@ import java.sql.Date;
  */
 public class Event2 {
     
-    @SwingColumn (description="Identificador")
     private Integer id;
     @SwingColumn (description="Dia")
     private Integer day;
@@ -24,6 +23,11 @@ public class Event2 {
     private Integer year;
     @SwingColumn (description="Nota")
     private String notes;
+    @SwingColumn (description="Local")
+    private String locate;
+    @SwingColumn (description="Serviço")
+    private String tservice;
+    
 
     public Integer getId() {
         return id;
@@ -63,6 +67,22 @@ public class Event2 {
 
     public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public String getLocate() {
+        return locate;
+    }
+
+    public void setLocate(String locate) {
+        this.locate = locate;
+    }
+
+    public String getTservice() {
+        return tservice;
+    }
+
+    public void setTservice(String tservice) {
+        this.tservice = tservice;
     }
     
     

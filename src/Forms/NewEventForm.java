@@ -45,6 +45,10 @@ public class NewEventForm extends javax.swing.JFrame {
         jtf_desc = new javax.swing.JTextField();
         jb_cancel = new javax.swing.JButton();
         jb_save = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jtf_locate = new javax.swing.JTextField();
+        jcb_service = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Eventos");
@@ -61,17 +65,17 @@ public class NewEventForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(144, 184, 248));
         jLabel2.setText("Descrição : ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 87, -1, 38));
-        jPanel1.add(jdc_pick, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 400, 38));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 38));
+        jPanel1.add(jdc_pick, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 430, 38));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(144, 184, 248));
         jLabel3.setText("Data :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 77, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 77, 30));
 
         jtf_desc.setMinimumSize(new java.awt.Dimension(27, 20));
         jtf_desc.setPreferredSize(new java.awt.Dimension(91, 20));
-        jPanel1.add(jtf_desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 87, 400, 38));
+        jPanel1.add(jtf_desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 430, 38));
 
         jb_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/stop.png"))); // NOI18N
         jb_cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +83,7 @@ public class NewEventForm extends javax.swing.JFrame {
                 jb_cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 100, 60));
+        jPanel1.add(jb_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 100, 60));
 
         jb_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/save.png"))); // NOI18N
         jb_save.addActionListener(new java.awt.event.ActionListener() {
@@ -87,17 +91,36 @@ public class NewEventForm extends javax.swing.JFrame {
                 jb_saveActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 100, 60));
+        jPanel1.add(jb_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 100, 60));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(144, 184, 248));
+        jLabel4.setText("Serviço :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 38));
+
+        jtf_locate.setMinimumSize(new java.awt.Dimension(27, 20));
+        jtf_locate.setPreferredSize(new java.awt.Dimension(91, 20));
+        jPanel1.add(jtf_locate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 430, 38));
+
+        jcb_service.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Limpeza", "Detetização", "Impermeabilização", "Instalação", "Manutenção de Bombas" }));
+        jPanel1.add(jcb_service, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 430, 38));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(144, 184, 248));
+        jLabel5.setText("Local :");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 38));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -106,7 +129,11 @@ public class NewEventForm extends javax.swing.JFrame {
 
     private void jb_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelActionPerformed
         // TODO add your handling code here:
-        dispose();
+        //dispose();
+        jtf_desc.setText("");
+        jtf_locate.setText("");
+        jcb_service.setSelectedIndex(0);
+        
     }//GEN-LAST:event_jb_cancelActionPerformed
 
     private void jb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_saveActionPerformed
@@ -158,11 +185,15 @@ public class NewEventForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jb_cancel;
     private javax.swing.JButton jb_save;
+    private javax.swing.JComboBox jcb_service;
     private com.toedter.calendar.JDateChooser jdc_pick;
     private javax.swing.JTextField jtf_desc;
+    private javax.swing.JTextField jtf_locate;
     // End of variables declaration//GEN-END:variables
 
     private void save() throws SQLException {
@@ -187,6 +218,8 @@ public class NewEventForm extends javax.swing.JFrame {
         event.setMonth(Integer.parseInt(month));
         event.setYear(Integer.parseInt(year));
         event.setNotes(jtf_desc.getText());
+        event.setLocate(jtf_locate.getText());
+        event.setTservice(jcb_service.getSelectedItem().toString());
         
         eventDAO.getConnection();
         eventDAO.addEvent(event);

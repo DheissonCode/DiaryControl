@@ -77,7 +77,8 @@ public class NewContactForm extends javax.swing.JFrame {
         jtf_origin = new javax.swing.JTextField();
         jtf_cpf = new javax.swing.JTextField();
         jft_zip = new javax.swing.JFormattedTextField();
-        jdc_pick = new com.toedter.calendar.JDateChooser();
+        jmc_month = new com.toedter.calendar.JMonthChooser();
+        jyc_year = new com.toedter.calendar.JYearChooser();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_notes = new javax.swing.JTextArea();
@@ -189,7 +190,11 @@ public class NewContactForm extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jPanel5.add(jft_zip, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 413, 140, 28));
-        jPanel5.add(jdc_pick, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 282, 180, 26));
+
+        jmc_month.setMinimumSize(new java.awt.Dimension(110, 24));
+        jmc_month.setPreferredSize(new java.awt.Dimension(120, 28));
+        jPanel5.add(jmc_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 30));
+        jPanel5.add(jyc_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 80, 28));
 
         jTabbedPane1.addTab("Dados", jPanel5);
 
@@ -328,12 +333,12 @@ public class NewContactForm extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_cadastrar;
     private javax.swing.JButton jb_voltar;
-    private com.toedter.calendar.JDateChooser jdc_pick;
     private javax.swing.JFormattedTextField jft_cel1;
     private javax.swing.JFormattedTextField jft_cel2;
     private javax.swing.JFormattedTextField jft_phone1;
     private javax.swing.JFormattedTextField jft_phone2;
     private javax.swing.JFormattedTextField jft_zip;
+    private com.toedter.calendar.JMonthChooser jmc_month;
     private javax.swing.JTextArea jta_notes;
     private javax.swing.JTextField jtf_address;
     private javax.swing.JTextField jtf_client;
@@ -342,6 +347,7 @@ public class NewContactForm extends javax.swing.JFrame {
     private javax.swing.JTextField jtf_email;
     private javax.swing.JTextField jtf_origin;
     private javax.swing.JTextField jtf_zone;
+    private com.toedter.calendar.JYearChooser jyc_year;
     // End of variables declaration//GEN-END:variables
 
     private void save() throws SQLException, ParseException 
@@ -358,28 +364,10 @@ public class NewContactForm extends javax.swing.JFrame {
         contacts.setEmail(jtf_email.getText());
         
         
-        //Here begins the best 'gambiarra' you've ever seen
-        //PLEASE DON'T CHANGE NOTHING BELOW THIS COMMENT
+
         
-        Date dataTeste = jdc_pick.getDate();
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        String datr = formato.format(dataTeste);  
-        char d1 = datr.charAt(0);
-        char d2 = datr.charAt(1);
-        char m1 = datr.charAt(3);
-        char m2 = datr.charAt(4);
-        char y1 = datr.charAt(6);
-        char y2 = datr.charAt(7);
-        char y3 = datr.charAt(8);
-        char y4 = datr.charAt(9);
-        String day = ""+d1+""+d2;
-        String month = ""+m1+""+m2;
-        String year = ""+y1+""+y2+""+y3+""+y4;
-        //END 'gambiarra'
-        
-        contacts.setDay(Integer.parseInt(day));
-        contacts.setMonth(Integer.parseInt(month));
-        contacts.setYear(Integer.parseInt(year));
+        contacts.setMonth(jmc_month.getMonth());
+        contacts.setYear(jyc_year.getYear());
         contacts.setOrigin(jtf_origin.getText());
         contacts.setCpf(jtf_cpf.getText());
         contacts.setZipcode(jft_zip.getText());

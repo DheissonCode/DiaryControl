@@ -276,13 +276,13 @@ public class ShowContactForm extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        if(jTable1.getSelectedRow() == -1){
+      /*  if(jTable1.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null, "Selecione um Cliente!!", null, JOptionPane.ERROR_MESSAGE);
         }else{
            contacts = contactses.get(jTable1.getSelectedRow());
            new EditContactForm(users, contacts).show();
            dispose();
-        }
+        }*/
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

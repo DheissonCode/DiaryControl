@@ -268,7 +268,7 @@ public final class MainForm extends javax.swing.JFrame {
         });
         jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, 120, -1));
 
-        jb_callday.setText("Ligações para o dia !");
+        jb_callday.setText("Ligações para o mês !");
         jb_callday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_calldayActionPerformed(evt);
@@ -319,12 +319,12 @@ public final class MainForm extends javax.swing.JFrame {
 
         jMenu4.setText("Outros");
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
             }
         });
 

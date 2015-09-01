@@ -27,7 +27,6 @@ public class Contacts2 {
     @SwingColumn (description="Celular 2")
     private String cellphone2;
     private String email;
-    private Integer day;
     private Integer month;
     private Integer year;
     private String origin;
@@ -145,14 +144,6 @@ public class Contacts2 {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Integer getDay() {
-        return day;
-    }
-
-    public void setDay(Integer day) {
-        this.day = day;
     }
 
     public Integer getMonth() {

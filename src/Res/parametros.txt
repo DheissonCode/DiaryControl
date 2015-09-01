@@ -1,4 +1,4 @@
-23.88.254.249
+127.0.0.1
 root
-cls112233
-DiaryControl
+123
+diarycontrol

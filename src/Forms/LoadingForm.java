@@ -37,6 +37,7 @@ public Integer a = 0;
         jPanel1 = new javax.swing.JPanel();
         jpb_progresso = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         timer1.setDelay(100L);
         timer1.addTimerListener(new org.netbeans.examples.lib.timerbean.TimerListener() {
@@ -58,29 +59,33 @@ public Integer a = 0;
         jpb_progresso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jpb_progresso.setStringPainted(true);
         jPanel1.add(jpb_progresso);
-        jpb_progresso.setBounds(20, 220, 714, 25);
+        jpb_progresso.setBounds(110, 370, 714, 25);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Controle de Diário");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(250, 10, 210, 28);
+        jLabel1.setBounds(350, 20, 210, 28);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/loading.jpg"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 20, 950, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(740, 439));
+        setSize(new java.awt.Dimension(960, 439));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -134,6 +139,7 @@ public Integer a = 0;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jpb_progresso;
     private org.netbeans.examples.lib.timerbean.Timer timer1;

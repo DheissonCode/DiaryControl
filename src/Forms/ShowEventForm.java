@@ -112,7 +112,7 @@ public class ShowEventForm extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(200);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 620, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 730, 260));
 
         jPanel2.setOpaque(false);
 
@@ -159,13 +159,13 @@ public class ShowEventForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jb_new)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(jb_edit)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(jb_del)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addComponent(jb_back)
-                .addGap(243, 243, 243))
+                .addGap(164, 164, 164))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +179,9 @@ public class ShowEventForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 380, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 440, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 350));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 380));
 
         pack();
         setLocationRelativeTo(null);

@@ -32,7 +32,6 @@ public class Contacts3 {
     private String cellphone2;
     @SwingColumn (description="e-Mail")
     private String email;
-    private Integer day;
     private Integer month;
     private Integer year;
     @SwingColumn (description="Origem")
@@ -156,14 +155,6 @@ public class Contacts3 {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Integer getDay() {
-        return day;
-    }
-
-    public void setDay(Integer day) {
-        this.day = day;
     }
 
     public Integer getMonth() {

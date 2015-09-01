@@ -29,10 +29,9 @@ public final class CallDayForm extends javax.swing.JFrame {
      */
     public CallDayForm() {
         initComponents();
-        Integer day = datm.getDay();
         Integer month = datm.getMonth();
         Integer year = datm.getYear();
-        preencher_jtable(day, month, year);
+        preencher_jtable(month, year);
     }
 
     /**
@@ -140,10 +139,10 @@ public final class CallDayForm extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    public void preencher_jtable(Integer day, Integer month, Integer year) 
+    public void preencher_jtable(Integer month, Integer year) 
     {
         try {
-            contactses = contactDAO.getContactsCallDay(day, month, year);
+            contactses = contactDAO.getContactsCallDay(month-1, year);
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }

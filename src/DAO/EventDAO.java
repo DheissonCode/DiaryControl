@@ -93,15 +93,15 @@ public class EventDAO extends GenericDAO
             
     public Integer addEvent(Event2 events ) throws SQLException
     {
-        String query = "INSERT INTO event(day, month, year, notes) VALUES (?,?,?,?)";
-        executeComand(query, events.getDay(), events.getMonth(), events.getYear(), events.getNotes());
+        String query = "INSERT INTO event(day, month, year, notes, locate, tservice) VALUES (?,?,?,?,?,?)";
+        executeComand(query, events.getDay(), events.getMonth(), events.getYear(), events.getNotes(), events.getLocate(), events.getTservice());
         return events.getId();
         
     }
     
-    public void updateEvent(Event events) throws SQLException
+    public void updateEvent(Event2 events) throws SQLException
     {
-        String query = "UPDATE event SET day = ?, month = ?, year = ?, notes = ? WHERE id =?";
+        String query = "UPDATE event SET day = ?, month = ?, year = ?, notes = ?, locate = ?, tservice = ? WHERE id =?";
         executeComand(query, events.getDay(), events.getMonth(), events.getYear(), events.getNotes(), events.getId());        
         
     }
@@ -120,7 +120,9 @@ public class EventDAO extends GenericDAO
         retorno.setDay(Integer.parseInt(rs.getString("day")));
         retorno.setMonth(Integer.parseInt(rs.getString("month")));
         retorno.setYear(Integer.parseInt(rs.getString("year")));
-        retorno.setNotes(rs.getString("notes"));     
+        retorno.setNotes(rs.getString("notes"));
+        retorno.setLocate(rs.getString("locate"));
+        retorno.setTservice(rs.getString("tservice"));
         
         return retorno;
         
@@ -132,7 +134,9 @@ public class EventDAO extends GenericDAO
         retorno.setDay(Integer.parseInt(rs.getString("day")));
         retorno.setMonth(Integer.parseInt(rs.getString("month")));
         retorno.setYear(Integer.parseInt(rs.getString("year")));
-        retorno.setNotes(rs.getString("notes"));     
+        retorno.setNotes(rs.getString("notes"));
+        retorno.setLocate(rs.getString("locate"));
+        retorno.setTservice(rs.getString("tservice"));
         
         return retorno;
         
