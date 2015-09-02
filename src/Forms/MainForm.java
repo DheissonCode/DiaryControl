@@ -97,6 +97,7 @@ public final class MainForm extends javax.swing.JFrame {
         jb_callday = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jl_clientecont = new javax.swing.JLabel();
+        jrb_month = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_cli = new javax.swing.JMenuItem();
@@ -226,7 +227,7 @@ public final class MainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 500));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 470));
 
         jtf_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -266,7 +267,7 @@ public final class MainForm extends javax.swing.JFrame {
                 jrb_cpfActionPerformed(evt);
             }
         });
-        jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, 120, -1));
+        jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 120, -1));
 
         jb_callday.setText("Ligações para o mês !");
         jb_callday.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +288,19 @@ public final class MainForm extends javax.swing.JFrame {
         jl_clientecont.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jl_clientecont.setForeground(new java.awt.Color(255, 255, 255));
         jl_clientecont.setText("Clientes na tabela: ");
-        jPanel1.add(jl_clientecont, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 60, 170, 20));
+        jPanel1.add(jl_clientecont, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, 170, 20));
+
+        jrb_month.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_month);
+        jrb_month.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_month.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_month.setText("MÊS");
+        jrb_month.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_monthActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jrb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 120, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
 
@@ -319,12 +332,12 @@ public final class MainForm extends javax.swing.JFrame {
 
         jMenu4.setText("Outros");
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
             }
         });
 
@@ -388,11 +401,18 @@ public final class MainForm extends javax.swing.JFrame {
         } 
         
         else if(filter.equals("CPF"))
-            {
+        {
                 System.out.println("CPF");
                 search_jtable2Cpf(jtf_search.getText());
-            }
-        else{
+        }
+        else if(filter.equals("MONTH"))
+        {
+                System.out.println("MONTH");
+                search_jtable2Month(Integer.parseInt(jtf_search.getText()));
+        }
+        
+        else
+        {
             JOptionPane.showMessageDialog(null, "Selecione o filtro de pesquisa!!", null, JOptionPane.ERROR_MESSAGE);
         }
         
@@ -458,6 +478,11 @@ public final class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable2MouseClicked
 
+    private void jrb_monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_monthActionPerformed
+        // TODO add your handling code here:
+        filter = "MONTH";
+    }//GEN-LAST:event_jrb_monthActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -518,6 +543,7 @@ public final class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jl_clientecont;
     private javax.swing.JMenuItem jmi_cli;
     private javax.swing.JRadioButton jrb_cpf;
+    private javax.swing.JRadioButton jrb_month;
     private javax.swing.JRadioButton jrb_name;
     private javax.swing.JTextField jtf_search;
     // End of variables declaration//GEN-END:variables
@@ -555,6 +581,22 @@ public final class MainForm extends javax.swing.JFrame {
         jTable2.setModel(m);
         jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
     }
+        
+        private void search_jtable2Month(Integer month) 
+        {
+                
+            try 
+            {
+                contactses = contactDAO.getAllContactsPerMonth(month-1);
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
+            jTable2.setModel(m);
+            jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+        }
 
     private void preencher_jtableTudo() {
          try {

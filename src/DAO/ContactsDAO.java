@@ -115,6 +115,22 @@ public class ContactsDAO extends GenericDAO
                 rs.close();
         return contatu;
     }   
+        public List<Contacts> getAllContactsPerMonth(Integer month) throws SQLException 
+        {
+            List<Contacts> contatu = new LinkedList<Contacts>();
+        
+            String query = "SELECT * FROM contacts WHERE month = ?";
+             ResultSet rs = executeQuery(query, month);
+             //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
+                
+                while(rs.next())
+                {
+                    contatu.add(populateContactsMain(rs));
+                }
+                rs.close();
+                
+        return contatu;
+        }   
             
     public Integer addContacts(Contacts contatu ) throws SQLException
     {
