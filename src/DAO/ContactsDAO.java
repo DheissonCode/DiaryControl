@@ -21,7 +21,7 @@ public class ContactsDAO extends GenericDAO
     public void getContacts (Integer month, Integer year) throws SQLException
     {
         
-        String query = "SELECT * FROM event WHERE month = ? AND year = ?";
+        String query = "SELECT * FROM event WHERE month = ? AND year = ? order by client ASC";
         executeQuery(query, month, year);
         //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
         
@@ -31,7 +31,7 @@ public class ContactsDAO extends GenericDAO
     {
         List<Contacts> contatu = new LinkedList<Contacts>();
         
-        String query = "SELECT * FROM event WHERE month = ? AND year = ?";
+        String query = "SELECT * FROM event WHERE month = ? AND year = ? order by client ASC";
         ResultSet rs = executeQuery(query, month, year);
         //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
                 
@@ -47,7 +47,7 @@ public class ContactsDAO extends GenericDAO
         {
         List<Contacts2> contatu = new LinkedList<Contacts2>();
         
-        String query = "SELECT * FROM contacts WHERE month = ? AND year = ?";
+        String query = "SELECT * FROM contacts WHERE month = ? AND year = ? order by client ASC";
         ResultSet rs = executeQuery(query, month, year);
         //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
                 
@@ -63,7 +63,7 @@ public class ContactsDAO extends GenericDAO
     {
         List<Contacts> contatu = new LinkedList<Contacts>();
         
-        ResultSet rs = executeQuery("SELECT * FROM contacts ");
+        ResultSet rs = executeQuery("SELECT * FROM contacts order by client ASC ");
                 
                 while(rs.next())
                 {
@@ -77,7 +77,7 @@ public class ContactsDAO extends GenericDAO
     {
         List<Contacts3> contatu = new LinkedList<Contacts3>();
         
-        ResultSet rs = executeQuery("SELECT * FROM contacts ");
+        ResultSet rs = executeQuery("SELECT * FROM contacts order by client ASC");
                 
                 while(rs.next())
                 {
@@ -92,7 +92,7 @@ public class ContactsDAO extends GenericDAO
     {
         List<Contacts> contatu = new LinkedList<Contacts>();
         
-        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE client LIKE ?",name+"%");
+        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE client LIKE ?","%"+name+"%");
                 
                 while(rs.next())
                 {
@@ -101,12 +101,54 @@ public class ContactsDAO extends GenericDAO
                 rs.close();
         return contatu;
     }   
+        public List<Contacts> getAllContactsPerAddress(String name) throws SQLException 
+    {
+        List<Contacts> contatu = new LinkedList<Contacts>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE address LIKE ?","%"+name+"%");
+                
+                while(rs.next())
+                {
+                contatu.add(populateContactsMain(rs));
+                }
+                rs.close();
+        return contatu;
+    } 
+        
+         public List<Contacts> getAllContactsPerContact(String name) throws SQLException 
+    {
+        List<Contacts> contatu = new LinkedList<Contacts>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE contact LIKE ?","%"+name+"%");
+                
+                while(rs.next())
+                {
+                contatu.add(populateContactsMain(rs));
+                }
+                rs.close();
+        return contatu;
+    }
+         
+        public List<Contacts> getAllContactsPerZone(String name) throws SQLException 
+    {
+        List<Contacts> contatu = new LinkedList<Contacts>();
+        
+        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE zone LIKE ?","%"+name+"%");
+                
+                while(rs.next())
+                {
+                contatu.add(populateContactsMain(rs));
+                }
+                rs.close();
+        return contatu;
+    }
+        
             //This is a test
         public List<Contacts> getAllContactsPerCpf(String cpf) throws SQLException 
     {
         List<Contacts> contatu = new LinkedList<Contacts>();
         
-        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE cpf LIKE ?",cpf+"%");
+        ResultSet rs = executeQuery("SELECT * FROM contacts WHERE cpf LIKE ?","%"+cpf+"%");
                 
                 while(rs.next())
                 {
@@ -119,7 +161,7 @@ public class ContactsDAO extends GenericDAO
         {
             List<Contacts> contatu = new LinkedList<Contacts>();
         
-            String query = "SELECT * FROM contacts WHERE month = ?";
+            String query = "SELECT * FROM contacts WHERE month = ? order by client ASC";
              ResultSet rs = executeQuery(query, month);
              //rs =  executeQuery("select * from medicos where crm like ?",medicos.getCrm()+"%");
                 
@@ -153,7 +195,7 @@ public class ContactsDAO extends GenericDAO
         
     }
     
-    public void deleteContacts(Contacts3 contatu ) throws SQLException
+    public void deleteContacts(Contacts contatu ) throws SQLException
     {
         String query = "DELETE FROM contacts WHERE id = ? ";
         executeComand(query, contatu.getId());

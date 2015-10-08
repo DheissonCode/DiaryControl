@@ -18,23 +18,22 @@ public class Contacts {
     private String client;
     @SwingColumn (description="Endereço")
     private String address;
+    @SwingColumn (description="Bairro")
     private String zone;
+    @SwingColumn (description="Contato")
     private String contact;
     @SwingColumn (description="Telefone 1")
     private String phone1;
+    @SwingColumn (description="Telefone 2")
     private String phone2;
-    @SwingColumn (description="Celular 1")
     private String cellphone1;
     private String cellphone2;
-    @SwingColumn (description="e-Mail")
     private String email;
     private Integer month;
     private Integer year;
     private String origin;
-    @SwingColumn (description="CPF/CNPJ")
     private String cpf;
     private String zipcode;
-    @SwingColumn (description="Anotações")
     private String text;
     private String modified;
     private Date data;

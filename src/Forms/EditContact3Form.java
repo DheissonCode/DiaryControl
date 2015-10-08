@@ -39,9 +39,26 @@ public class EditContact3Form extends javax.swing.JFrame {
         initComponents();
         users = user;
         contas = conta;
-        carregar();
+        
         System.out.println("T : "+users.getName());
+        System.out.println("DADOS");
         System.out.println("A : "+contas.getClient());
+        System.out.println("A : "+contas.getAddress());
+        System.out.println("A : "+contas.getZone());
+        System.out.println("A : "+contas.getPhone1());
+        System.out.println("A : "+contas.getPhone2());
+        System.out.println("A : "+contas.getCellphone1());
+        System.out.println("A : "+contas.getCellphone2());
+        System.out.println("A : "+contas.getEmail());
+        System.out.println("A : "+contas.getMonth());
+        System.out.println("A : "+contas.getYear());
+        System.out.println("A : "+contas.getOrigin());
+        System.out.println("A : "+contas.getCpf());
+        System.out.println("A : "+contas.getZipcode());
+        System.out.println("A : "+contas.getText());
+        System.out.println("A : "+contas.getModified());
+        carregar();
+        
         //users.setName(txt);
         //jl_res.setText(users.getName());
     }
@@ -108,102 +125,102 @@ public class EditContact3Form extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel1.setText("Cliente:");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 27, -1, -1));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setText("Endereço:");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 66, -1, -1));
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel3.setText("Bairro:");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 105, -1, -1));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel4.setText("Contato:");
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 105, -1, -1));
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel5.setText("Telefone 1:");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 145, -1, -1));
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel6.setText("Telefone 2:");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 145, -1, -1));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel7.setText("Celular 1:");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 191, -1, -1));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel8.setText("Celular 2:");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 191, -1, -1));
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel9.setText("Email:");
-        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 233, -1, -1));
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel10.setText("Ligar em:");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 282, -1, -1));
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel11.setText("Origem:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 327, -1, -1));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel12.setText("CPF/CNPJ:");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 372, -1, -1));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel14.setText("CEP:");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 417, -1, -1));
-        jPanel5.add(jtf_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 23, 442, 28));
-        jPanel5.add(jtf_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 62, 442, 28));
-        jPanel5.add(jtf_zone, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 101, 190, 28));
-        jPanel5.add(jtf_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 101, 150, 28));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, -1));
+        jPanel5.add(jtf_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 510, 28));
+        jPanel5.add(jtf_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 510, 28));
+        jPanel5.add(jtf_zone, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 190, 28));
+        jPanel5.add(jtf_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 180, 28));
 
         try {
-            jft_phone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            jft_phone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jft_phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 141, 140, 28));
+        jPanel5.add(jft_phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 140, 28));
 
         try {
-            jft_phone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            jft_phone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jft_phone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 141, 150, 28));
+        jPanel5.add(jft_phone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 180, 28));
 
         try {
-            jft_cel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jft_cel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jft_cel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 187, 138, 28));
+        jPanel5.add(jft_cel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 138, 28));
 
         try {
-            jft_cel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jft_cel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jft_cel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 187, 150, 28));
-        jPanel5.add(jtf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 233, 270, 28));
-        jPanel5.add(jtf_origin, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 323, 270, 28));
-        jPanel5.add(jtf_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 368, 270, 28));
+        jPanel5.add(jft_cel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 180, 28));
+        jPanel5.add(jtf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 270, 28));
+        jPanel5.add(jtf_origin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 270, 28));
+        jPanel5.add(jtf_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 270, 28));
 
         try {
             jft_zip.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel5.add(jft_zip, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 413, 140, 28));
+        jPanel5.add(jft_zip, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 140, 28));
 
         jmc_month.setMinimumSize(new java.awt.Dimension(110, 24));
         jmc_month.setPreferredSize(new java.awt.Dimension(120, 28));
-        jPanel5.add(jmc_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 28));
-        jPanel5.add(jyc_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 80, 28));
+        jPanel5.add(jmc_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 110, 28));
+        jPanel5.add(jyc_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 80, 28));
 
         jTabbedPane1.addTab("Dados", jPanel5);
 
@@ -222,7 +239,7 @@ public class EditContact3Form extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -234,13 +251,13 @@ public class EditContact3Form extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Anotações", jPanel6);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 630, 480));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 670, 570));
 
         jb_cadastrar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jb_cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/save.png"))); // NOI18N
@@ -250,7 +267,7 @@ public class EditContact3Form extends javax.swing.JFrame {
                 jb_cadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 110, 50));
+        jPanel1.add(jb_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 110, 50));
 
         jb_voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jb_voltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/stop.png"))); // NOI18N
@@ -260,20 +277,20 @@ public class EditContact3Form extends javax.swing.JFrame {
                 jb_voltarActionPerformed(evt);
             }
         });
-        jPanel1.add(jb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 110, 50));
+        jPanel1.add(jb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, 110, 50));
 
         jl_mod.setBackground(new java.awt.Color(102, 153, 255));
         jl_mod.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jl_mod.setForeground(new java.awt.Color(102, 153, 255));
-        jPanel1.add(jl_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 210, 20));
+        jPanel1.add(jl_mod, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 210, 20));
 
         jLabel16.setBackground(new java.awt.Color(102, 153, 255));
         jLabel16.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(102, 153, 255));
         jLabel16.setText("Ultima Alteração por : ");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 640));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -282,15 +299,19 @@ public class EditContact3Form extends javax.swing.JFrame {
     private void jb_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cadastrarActionPerformed
         try {
             save();
-            dispose();
         } catch (SQLException ex) {
             Logger.getLogger(EditContactForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jb_cadastrarActionPerformed
 
     private void jb_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_voltarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            deletar();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditContact3Form.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jb_voltarActionPerformed
 
     /**
@@ -436,5 +457,10 @@ public class EditContact3Form extends javax.swing.JFrame {
         jyc_year.setYear(Integer.parseInt(currentYear));
         
     }    
+      public void deletar() throws SQLException{
+        contactsDAO.deleteContacts(contas);
+        JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso !");
+        this.dispose();
+}
 
 }

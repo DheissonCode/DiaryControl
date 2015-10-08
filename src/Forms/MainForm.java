@@ -62,9 +62,9 @@ public final class MainForm extends javax.swing.JFrame {
         Integer day = datm.getDay();
         Integer month = datm.getMonth();
         Integer year = datm.getYear();
-        preencher_jtable(day, month, year);
         preencher_jtableTudo();
         users = user;
+
         
 
     }
@@ -81,118 +81,201 @@ public final class MainForm extends javax.swing.JFrame {
 
         bg_search = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jc_day = new com.toedter.calendar.JDayChooser();
-        jc_month = new com.toedter.calendar.JMonthChooser();
-        jc_year = new com.toedter.calendar.JYearChooser();
-        jb_consul = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jp_form = new javax.swing.JPanel();
+        jb_new = new javax.swing.JButton();
         jtf_search = new javax.swing.JTextField();
         jb_ok = new javax.swing.JButton();
         jrb_name = new javax.swing.JRadioButton();
-        jrb_cpf = new javax.swing.JRadioButton();
-        jb_callday = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jrb_address = new javax.swing.JRadioButton();
+        jb_atualizar = new javax.swing.JButton();
         jl_clientecont = new javax.swing.JLabel();
+        jrb_contact = new javax.swing.JRadioButton();
         jrb_month = new javax.swing.JRadioButton();
+        jrb_month1 = new javax.swing.JRadioButton();
+        jl_qnt = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jmi_cli = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 620));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(38, 40, 43));
         jPanel1.setPreferredSize(new java.awt.Dimension(1272, 628));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Identificador", "Nota"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
+        jp_form.setBackground(new java.awt.Color(38, 40, 43));
+        jp_form.setMinimumSize(new java.awt.Dimension(100, 80));
+        jp_form.setName(""); // NOI18N
+        jp_form.setPreferredSize(new java.awt.Dimension(100, 80));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(610);
-        }
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 610, 230));
-
-        jPanel2.setBackground(new java.awt.Color(53, 57, 65));
-
-        jc_month.setDayChooser(jc_day);
-
-        jc_year.setDayChooser(jc_day);
-
-        jb_consul.setText("Realizar Consulta !");
-        jb_consul.addActionListener(new java.awt.event.ActionListener() {
+        jb_new.setText("Novo Cliente");
+        jb_new.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_consulActionPerformed(evt);
+                jb_newActionPerformed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(129, 129, 129)
-                        .add(jb_consul)
+        jtf_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyReleased(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtf_searchKeyPressed(evt);
+            }
+        });
+
+        jb_ok.setText("Ok !");
+        jb_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_okActionPerformed(evt);
+            }
+        });
+
+        jrb_name.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_name);
+        jrb_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_name.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_name.setSelected(true);
+        jrb_name.setText("Nome Cliente");
+        jrb_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_nameActionPerformed(evt);
+            }
+        });
+
+        jrb_address.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_address);
+        jrb_address.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_address.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_address.setText("Endereço");
+        jrb_address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_addressActionPerformed(evt);
+            }
+        });
+
+        jb_atualizar.setText("Atualizar !");
+        jb_atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_atualizarActionPerformed(evt);
+            }
+        });
+
+        jl_clientecont.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jl_clientecont.setForeground(new java.awt.Color(255, 255, 255));
+        jl_clientecont.setText("Clientes na tabela: ");
+
+        jrb_contact.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_contact);
+        jrb_contact.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_contact.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_contact.setText("Contato");
+        jrb_contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_contactActionPerformed(evt);
+            }
+        });
+
+        jrb_month.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_month);
+        jrb_month.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_month.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_month.setText("Bairro");
+        jrb_month.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_monthActionPerformed(evt);
+            }
+        });
+
+        jrb_month1.setBackground(new java.awt.Color(38, 40, 43));
+        bg_search.add(jrb_month1);
+        jrb_month1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jrb_month1.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_month1.setText("Mês");
+        jrb_month1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_month1ActionPerformed(evt);
+            }
+        });
+
+        jl_qnt.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jl_qnt.setForeground(new java.awt.Color(255, 255, 255));
+        jl_qnt.setText("Clientes Cadastrados : X");
+
+        org.jdesktop.layout.GroupLayout jp_formLayout = new org.jdesktop.layout.GroupLayout(jp_form);
+        jp_form.setLayout(jp_formLayout);
+        jp_formLayout.setHorizontalGroup(
+            jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jp_formLayout.createSequentialGroup()
+                .add(1060, 1060, 1060)
+                .add(jl_clientecont, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 170, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(58, 58, 58))
+            .add(jp_formLayout.createSequentialGroup()
+                .add(30, 30, 30)
+                .add(jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jp_formLayout.createSequentialGroup()
+                        .add(jtf_search, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 430, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .add(jb_ok, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jp_formLayout.createSequentialGroup()
+                        .add(jrb_name, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 130, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jrb_address)
+                        .add(18, 18, 18)
+                        .add(jrb_contact)
+                        .add(18, 18, 18)
+                        .add(jrb_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 74, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(jrb_month1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(45, 45, 45)
+                        .add(jb_atualizar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jp_formLayout.createSequentialGroup()
+                        .add(112, 112, 112)
+                        .add(jb_new, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jp_formLayout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jl_qnt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 250, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(11, 11, 11)
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jc_month, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jb_consul)
-                    .add(jc_year, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jc_day, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                .addContainerGap())
+        jp_formLayout.setVerticalGroup(
+            jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jp_formLayout.createSequentialGroup()
+                .add(jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jp_formLayout.createSequentialGroup()
+                        .add(10, 10, 10)
+                        .add(jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jtf_search, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jb_ok, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jb_new))
+                        .add(10, 10, 10)
+                        .add(jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jrb_name)
+                            .add(jrb_address)
+                            .add(jrb_contact)
+                            .add(jrb_month1)
+                            .add(jrb_month)))
+                    .add(jp_formLayout.createSequentialGroup()
+                        .add(52, 52, 52)
+                        .add(jp_formLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jb_atualizar)
+                            .add(jl_qnt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .add(623, 623, 623)
+                .add(jl_clientecont, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 610, 240));
+        jPanel1.add(jp_form);
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,95 +310,9 @@ public final class MainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 540, 470));
+        jPanel1.add(jScrollPane1);
 
-        jtf_search.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtf_searchKeyPressed(evt);
-            }
-        });
-        jPanel1.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 430, 30));
-
-        jb_ok.setText("Ok !");
-        jb_ok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_okActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jb_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 90, 30));
-
-        jrb_name.setBackground(new java.awt.Color(38, 40, 43));
-        bg_search.add(jrb_name);
-        jrb_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jrb_name.setForeground(new java.awt.Color(255, 255, 255));
-        jrb_name.setSelected(true);
-        jrb_name.setText("Nome Cliente");
-        jrb_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrb_nameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jrb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 130, -1));
-
-        jrb_cpf.setBackground(new java.awt.Color(38, 40, 43));
-        bg_search.add(jrb_cpf);
-        jrb_cpf.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jrb_cpf.setForeground(new java.awt.Color(255, 255, 255));
-        jrb_cpf.setText("CPF/CNPJ");
-        jrb_cpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrb_cpfActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jrb_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 120, -1));
-
-        jb_callday.setText("Ligações para o mês !");
-        jb_callday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_calldayActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jb_callday, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 170, 40));
-
-        jButton1.setText("Atualizar !");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 60, 90, -1));
-
-        jl_clientecont.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jl_clientecont.setForeground(new java.awt.Color(255, 255, 255));
-        jl_clientecont.setText("Clientes na tabela: ");
-        jPanel1.add(jl_clientecont, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, 170, 20));
-
-        jrb_month.setBackground(new java.awt.Color(38, 40, 43));
-        bg_search.add(jrb_month);
-        jrb_month.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jrb_month.setForeground(new java.awt.Color(255, 255, 255));
-        jrb_month.setText("MÊS");
-        jrb_month.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrb_monthActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jrb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 120, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, -1));
-
-        jMenu1.setText("Clientes");
-
-        jmi_cli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        jmi_cli.setText("Gerenciar Clientes");
-        jmi_cli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_cliActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmi_cli);
-
-        jMenuBar1.add(jMenu1);
+        getContentPane().add(jPanel1);
 
         jMenu2.setText("Agenda");
 
@@ -327,6 +324,15 @@ public final class MainForm extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem7);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Ver Eventos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
 
@@ -363,7 +369,7 @@ public final class MainForm extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1304, 667));
+        setSize(new java.awt.Dimension(1304, 784));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -390,6 +396,7 @@ public final class MainForm extends javax.swing.JFrame {
 
     private void jtf_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_searchKeyReleased
         // TODO add your handling code here:
+ //           jb_okActionPerformed(null);
     }//GEN-LAST:event_jtf_searchKeyReleased
 
     private void jb_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_okActionPerformed
@@ -400,15 +407,27 @@ public final class MainForm extends javax.swing.JFrame {
         search_jtable2Name(jtf_search.getText());
         } 
         
-        else if(filter.equals("CPF"))
+        else if(filter.equals("ADDRESS"))
         {
-                System.out.println("CPF");
-                search_jtable2Cpf(jtf_search.getText());
+                System.out.println("ADDRESS");
+                search_jtable2Address(jtf_search.getText());
         }
         else if(filter.equals("MONTH"))
         {
                 System.out.println("MONTH");
                 search_jtable2Month(Integer.parseInt(jtf_search.getText()));
+        }
+        
+        else if(filter.equals("CONTACT"))
+        {
+                System.out.println("CONTACT");
+                search_jtable2Contact(jtf_search.getText());
+        }
+        
+        else if(filter.equals("ZONE"))
+        {
+                System.out.println("ZONE");
+                search_jtable2Zone(jtf_search.getText());
         }
         
         else
@@ -418,30 +437,15 @@ public final class MainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jb_okActionPerformed
 
-    private void jb_consulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_consulActionPerformed
-        // TODO add your handling code here:
-        preencher_jtable(jc_day.getDay(), jc_month.getMonth()+1, jc_year.getYear());
-    }//GEN-LAST:event_jb_consulActionPerformed
-
-    private void jb_calldayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_calldayActionPerformed
-        // TODO add your handling code here:
-        new CallDayForm().show();
-    }//GEN-LAST:event_jb_calldayActionPerformed
-
-    private void jmi_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cliActionPerformed
-        // TODO add your handling code here:
-        new ShowContactForm(users).show();
-    }//GEN-LAST:event_jmi_cliActionPerformed
-
     private void jrb_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_nameActionPerformed
         // TODO add your handling code here:
         filter = "NAME";
     }//GEN-LAST:event_jrb_nameActionPerformed
 
-    private void jrb_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_cpfActionPerformed
+    private void jrb_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_addressActionPerformed
         // TODO add your handling code here:
-        filter = "CPF";
-    }//GEN-LAST:event_jrb_cpfActionPerformed
+        filter = "ADDRESS";
+    }//GEN-LAST:event_jrb_addressActionPerformed
 
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
         // TODO add your handling code here:
@@ -458,10 +462,10 @@ public final class MainForm extends javax.swing.JFrame {
         new UsersForm().show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jb_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_atualizarActionPerformed
         // TODO add your handling code here:
         preencher_jtableTudo();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jb_atualizarActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
@@ -478,10 +482,30 @@ public final class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable2MouseClicked
 
+    private void jrb_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_contactActionPerformed
+        // TODO add your handling code here:
+        filter = "CONTACT";
+    }//GEN-LAST:event_jrb_contactActionPerformed
+
+    private void jb_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_newActionPerformed
+        // TODO add your handling code here:
+        new NewContactForm(users).show();
+    }//GEN-LAST:event_jb_newActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        new NewQueryDate().show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     private void jrb_monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_monthActionPerformed
         // TODO add your handling code here:
-        filter = "MONTH";
+        filter = "ZONE";
     }//GEN-LAST:event_jrb_monthActionPerformed
+
+    private void jrb_month1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_month1ActionPerformed
+        // TODO add your handling code here:
+        filter = "MONTH";
+    }//GEN-LAST:event_jrb_month1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -520,45 +544,30 @@ public final class MainForm extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_search;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JButton jb_callday;
-    private javax.swing.JButton jb_consul;
+    private javax.swing.JButton jb_atualizar;
+    private javax.swing.JButton jb_new;
     private javax.swing.JButton jb_ok;
-    private com.toedter.calendar.JDayChooser jc_day;
-    private com.toedter.calendar.JMonthChooser jc_month;
-    private com.toedter.calendar.JYearChooser jc_year;
     private javax.swing.JLabel jl_clientecont;
-    private javax.swing.JMenuItem jmi_cli;
-    private javax.swing.JRadioButton jrb_cpf;
+    private javax.swing.JLabel jl_qnt;
+    private javax.swing.JPanel jp_form;
+    private javax.swing.JRadioButton jrb_address;
+    private javax.swing.JRadioButton jrb_contact;
     private javax.swing.JRadioButton jrb_month;
+    private javax.swing.JRadioButton jrb_month1;
     private javax.swing.JRadioButton jrb_name;
     private javax.swing.JTextField jtf_search;
     // End of variables declaration//GEN-END:variables
 
-    public void preencher_jtable(Integer day, Integer month, Integer year) 
-    {
-        try {
-            evento = eventDAO.getEventList(day, month, year);
-        } catch (SQLException ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        MyTableModel m = new MyTableModel(Event.class, evento, jTable1);
-        jTable1.setModel(m);
-        
-    }
 
     private void search_jtable2Name(String name) {
                 try {
@@ -569,6 +578,60 @@ public final class MainForm extends javax.swing.JFrame {
         MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
         jTable2.setModel(m);
         jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+                
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
+    }
+        
+    private void search_jtable2Address(String name) {
+                try {
+            contactses = contactDAO.getAllContactsPerAddress(name);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
+        jTable2.setModel(m);
+        jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+                
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
+    }
+            
+    
+    private void search_jtable2Contact(String name) {
+                try {
+            contactses = contactDAO.getAllContactsPerContact(name);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
+        jTable2.setModel(m);
+        jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+                
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
+    }
+    
+    private void search_jtable2Zone(String name) {
+                try {
+            contactses = contactDAO.getAllContactsPerZone(name);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
+        jTable2.setModel(m);
+        jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+                
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
     }
     
         private void search_jtable2Cpf(String cpf) {
@@ -580,6 +643,11 @@ public final class MainForm extends javax.swing.JFrame {
         MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
         jTable2.setModel(m);
         jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+                
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
     }
         
         private void search_jtable2Month(Integer month) 
@@ -596,6 +664,11 @@ public final class MainForm extends javax.swing.JFrame {
             MyTableModel m = new MyTableModel(Contacts.class, contactses, jTable2);
             jTable2.setModel(m);
             jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+                    
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
         }
 
     private void preencher_jtableTudo() {
@@ -610,6 +683,11 @@ public final class MainForm extends javax.swing.JFrame {
         jTable2.setModel(m);
         
         jl_clientecont.setText("Clientes na tabela: "+jTable2.getRowCount());
+        
+                int rows = jTable2.getRowCount();
+        jl_qnt.setText("Clientes Cadastrados : "+rows+"");
+        
+        jScrollPane1.createVerticalScrollBar();
         
     }
 

@@ -12,7 +12,6 @@ import Forms.SwingColumn;
  */
 public class Contacts3 {
     
-    @SwingColumn (description="Id")
     private Integer id;
     @SwingColumn (description="Cliente")
     private String client;

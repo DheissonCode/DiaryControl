@@ -163,28 +163,28 @@ public class EditContactForm extends javax.swing.JFrame {
         jPanel5.add(jtf_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 101, 150, 28));
 
         try {
-            jft_phone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            jft_phone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jPanel5.add(jft_phone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 141, 140, 28));
 
         try {
-            jft_phone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            jft_phone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jPanel5.add(jft_phone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 141, 150, 28));
 
         try {
-            jft_cel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jft_cel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jPanel5.add(jft_cel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 187, 138, 28));
 
         try {
-            jft_cel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jft_cel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }

@@ -10,11 +10,18 @@ import Entity.Contacts;
 import Entity.Contacts3;
 import Entity.Users;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -40,34 +47,15 @@ public class ShowContactForm extends javax.swing.JFrame {
         initComponents();
         preencher_jtableTudo();
     
-        jTable1.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
- 
-        for (int column = 0; column < jTable1.getColumnCount(); column++)
-        {
-            TableColumn tableColumn = jTable1.getColumnModel().getColumn(column);
-            int preferredWidth = tableColumn.getMinWidth();
-            int maxWidth = tableColumn.getMaxWidth();
- 
-            for (int row = 0; row < jTable1.getRowCount(); row++)
-            {
-                TableCellRenderer cellRenderer = jTable1.getCellRenderer(row, column);
-                Component c = jTable1.prepareRenderer(cellRenderer, row, column);
-                int width = c.getPreferredSize().width + jTable1.getIntercellSpacing().width;
-                preferredWidth = Math.max(preferredWidth, width);
- 
- 
-                    if (preferredWidth >= maxWidth)
-                    {
-                    preferredWidth = maxWidth;
-                    break;
-                    }
-            }
- 
-            tableColumn.setPreferredWidth( preferredWidth );
-        }
+        jtablewi();
         System.out.println("1 : "+user.getName());
         users = user;
         System.out.println("2"+users.getName());
+        //getContentPane().setLayout(new java.awt.GridLayout(1, 1));
+        //JPanel panel = new JPanel();
+       // jPanel1.setLayout(new BoxLayout(jPanel1,BoxLayout.Y_AXIS));
+        //jPanel2.setLayout(new BoxLayout(jPanel2,BoxLayout.X_AXIS));
+        //jPanel1.revalidate();
     }
 
     /**
@@ -80,38 +68,83 @@ public class ShowContactForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jb_new = new javax.swing.JButton();
         jb_edit = new javax.swing.JButton();
         jb_del = new javax.swing.JButton();
-        jb_back = new javax.swing.JButton();
+        jb_reload = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lista de Clientes");
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(781, 845));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(53, 57, 65));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+
+        jb_new.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jb_new.setMnemonic('n');
+        jb_new.setText("Novo");
+        jb_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_newActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jb_new);
+
+        jb_edit.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jb_edit.setMnemonic('e');
+        jb_edit.setText("Editar");
+        jb_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_editActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jb_edit);
+
+        jb_del.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jb_del.setMnemonic('d');
+        jb_del.setText("Deletar");
+        jb_del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_delActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jb_del);
+
+        jb_reload.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jb_reload.setMnemonic('v');
+        jb_reload.setText("Atualizar");
+        jb_reload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_reloadActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jb_reload);
+
+        jPanel1.add(jPanel2);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Cliente", "Endereço", "Bairro", "Contato", "Telefone 1", "Telefone 2", "Celular 1", "Celular 2", "e-Mail", "Origem", "CPF/CNPJ", "CEP", "Anotação", "Modificado"
+                "Cliente", "Endereço", "Bairro", "Contato", "Telefone 1", "Telefone 2", "Celular 1", "Celular 2", "e-Mail", "Origem", "CPF/CNPJ", "CEP", "Anotação", "Modificado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -129,6 +162,8 @@ public class ShowContactForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -151,96 +186,21 @@ public class ShowContactForm extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(11).setResizable(false);
             jTable1.getColumnModel().getColumn(11).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(12).setResizable(false);
-            jTable1.getColumnModel().getColumn(12).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(12).setPreferredWidth(300);
             jTable1.getColumnModel().getColumn(13).setResizable(false);
-            jTable1.getColumnModel().getColumn(13).setPreferredWidth(300);
-            jTable1.getColumnModel().getColumn(14).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1030, 510));
+        jPanel1.add(jScrollPane1);
 
-        jPanel2.setOpaque(false);
-
-        jb_new.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jb_new.setMnemonic('n');
-        jb_new.setText("Novo");
-        jb_new.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_newActionPerformed(evt);
-            }
-        });
-
-        jb_edit.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jb_edit.setMnemonic('e');
-        jb_edit.setText("Editar");
-        jb_edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_editActionPerformed(evt);
-            }
-        });
-
-        jb_del.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jb_del.setMnemonic('d');
-        jb_del.setText("Deletar");
-        jb_del.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_delActionPerformed(evt);
-            }
-        });
-
-        jb_back.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jb_back.setMnemonic('v');
-        jb_back.setText("Voltar");
-        jb_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_backActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(267, Short.MAX_VALUE)
-                .addComponent(jb_new)
-                .addGap(18, 18, 18)
-                .addComponent(jb_edit)
-                .addGap(18, 18, 18)
-                .addComponent(jb_del)
-                .addGap(18, 18, 18)
-                .addComponent(jb_back)
-                .addGap(243, 243, 243))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_edit)
-                    .addComponent(jb_new)
-                    .addComponent(jb_del)
-                    .addComponent(jb_back))
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 850, 60));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 660));
+        getContentPane().add(jPanel1);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jb_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_backActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jb_backActionPerformed
-
     private void jb_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_newActionPerformed
         // TODO add your handling code here:
         new NewContactForm(users).show();
-        dispose();
     }//GEN-LAST:event_jb_newActionPerformed
 
     private void jb_delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_delActionPerformed
@@ -270,7 +230,6 @@ public class ShowContactForm extends javax.swing.JFrame {
         }else{
            contacts = contactses.get(jTable1.getSelectedRow());
            new EditContactForm(users, contacts).show();
-           dispose();
         }
     }//GEN-LAST:event_jb_editActionPerformed
 
@@ -284,6 +243,12 @@ public class ShowContactForm extends javax.swing.JFrame {
            dispose();
         }*/
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jb_reloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_reloadActionPerformed
+        // TODO add your handling code here:
+        preencher_jtableTudo();
+        jtablewi();
+    }//GEN-LAST:event_jb_reloadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,10 +290,10 @@ public class ShowContactForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton jb_back;
     private javax.swing.JButton jb_del;
     private javax.swing.JButton jb_edit;
     private javax.swing.JButton jb_new;
+    private javax.swing.JButton jb_reload;
     // End of variables declaration//GEN-END:variables
 
 private void preencher_jtableTudo() {
@@ -345,7 +310,39 @@ private void preencher_jtableTudo() {
     }
 
 public void deletar() throws SQLException{
-    contactDAO.deleteContacts(contacts2);
+   // contactDAO.deleteContacts(contacts2);
 }
 
+    private void jtablewi() {
+        jTable1.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+ 
+        for (int column = 0; column < jTable1.getColumnCount(); column++)
+        {
+            TableColumn tableColumn = jTable1.getColumnModel().getColumn(column);
+            int preferredWidth = tableColumn.getMinWidth();
+            int maxWidth = tableColumn.getMaxWidth();
+ 
+            for (int row = 0; row < jTable1.getRowCount(); row++)
+            {
+                TableCellRenderer cellRenderer = jTable1.getCellRenderer(row, column);
+                Component c = jTable1.prepareRenderer(cellRenderer, row, column);
+                int width = c.getPreferredSize().width + jTable1.getIntercellSpacing().width;
+                preferredWidth = Math.max(preferredWidth, width);
+ 
+ 
+                    if (preferredWidth >= maxWidth)
+                    {
+                    preferredWidth = maxWidth;
+                    break;
+                    }
+            }
+ 
+            tableColumn.setPreferredWidth( preferredWidth );
+        }
+    }
+
+   
+
 }
+
+

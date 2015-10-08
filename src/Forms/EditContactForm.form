@@ -268,7 +268,7 @@
                 <Component class="javax.swing.JFormattedTextField" name="jft_phone1">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                      <Format format="(##)####-####" subtype="-1" type="5"/>
+                      <Format format="####-####" subtype="-1" type="5"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -280,7 +280,7 @@
                 <Component class="javax.swing.JFormattedTextField" name="jft_phone2">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                      <Format format="(##)####-####" subtype="-1" type="5"/>
+                      <Format format="####-####" subtype="-1" type="5"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -292,7 +292,7 @@
                 <Component class="javax.swing.JFormattedTextField" name="jft_cel1">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                      <Format format="(##)#####-####" subtype="-1" type="5"/>
+                      <Format format="#####-####" subtype="-1" type="5"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -304,7 +304,7 @@
                 <Component class="javax.swing.JFormattedTextField" name="jft_cel2">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                      <Format format="(##)#####-####" subtype="-1" type="5"/>
+                      <Format format="#####-####" subtype="-1" type="5"/>
                     </Property>
                   </Properties>
                   <Constraints>
