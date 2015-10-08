@@ -213,7 +213,7 @@ public class ContactsDAO extends GenericDAO
         retorno.setPhone1(rs.getString("phone1"));
         retorno.setPhone2(rs.getString("phone2"));
         retorno.setCellphone1(rs.getString("cellphone1"));
-        retorno.setCellphone1(rs.getString("cellphone2"));
+        retorno.setCellphone2(rs.getString("cellphone2"));
         retorno.setEmail(rs.getString("email"));
         retorno.setMonth(rs.getInt("month"));
         retorno.setYear(rs.getInt("year"));
